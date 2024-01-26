@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class MiscItems
 {
@@ -32,7 +33,8 @@ public static class Utilities
 {
     public static T SelectRandom<T>(this IEnumerable<T> list)
     {
-        var rnd = new Random();
+        var rnd = new System.Random();
         return list.ElementAt(rnd.Next(list.Count()));
     }
+
 }

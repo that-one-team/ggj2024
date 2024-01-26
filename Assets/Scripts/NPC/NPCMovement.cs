@@ -17,15 +17,10 @@ public class NPCMovement : MonoBehaviour
 
         _agent.baseOffset = 5.85f;
 
-        ProcessState(0);
+        RandomState();
     }
 
-    public void ForceChangeState(int state)
-    {
-        ProcessState(state);
-    }
-
-    void ProcessState(int state)
+    public void ProcessState(int state)
     {
         CurrentState = state;
         if (state == 0)

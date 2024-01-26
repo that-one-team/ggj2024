@@ -10,7 +10,7 @@ public class SpawnZone : MonoBehaviour
 
     public Vector3 GetRandomPosition()
     {
-        var size = transform.localScale;
-        return new Vector3(transform.position.x + Random.Range(-size.x, size.x), 1, transform.position.z + Random.Range(-size.z, size.z));
+        var size = transform.localScale / 2;
+        return new Vector3(transform.localPosition.x + Random.Range(-size.x, size.x), 1, transform.localPosition.z + Random.Range(-size.z, size.z));
     }
 }
