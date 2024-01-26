@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerReputation : MonoBehaviour
+public class SocialBattery : MonoBehaviour
 {
-    public float reputation;
+    public float socialBattery;
     // Start is called before the first frame update
     void Start()
     {
-        reputation = 1;
+        socialBattery = 100;
     }
 
     // Update is called once per frame
