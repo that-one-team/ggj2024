@@ -20,17 +20,30 @@ public enum NPCState
 }
 
 
-[RequireComponent(typeof(CapsuleCollider), typeof(NPCMovement))]
+[RequireComponent(typeof(CapsuleCollider), typeof(NPCMovement), typeof(NPCInteraction))]
 public class NPCBehavior : MonoBehaviour
 {
     [field: SerializeField] public NPCData Data { get; set; }
 
     public void Spawn(Transform parent)
     {
-        transform.localScale = new Vector3(0.17f, 0.17f, 1);
-        transform.parent = parent;
+        name = Data.Name;
+        // transform.localScale = new Vector3(0.17f, 0.17f, 1);
+        // transform.parent = parent;
         GetComponent<CapsuleCollider>().radius = 1;
         GenerateOutfit();
+    }
+
+    public HumorStats GetHumorSum()
+    {
+        HumorStats stats = Data.Stats;
+
+        foreach (var clothes in Data.Clothes)
+        {
+            stats.Add(clothes.Stats);
+        }
+
+        return stats;
     }
 
     void GenerateOutfit()
@@ -76,7 +89,7 @@ public class NPCBehavior : MonoBehaviour
         spawnedItem.transform.position = transform.position + (Vector3.forward * -item.Offset);
         spawnedItem.transform.parent = transform;
         spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
-        spawnedItem.transform.localScale = Vector3.one;
+        // spawnedItem.transform.localScale = Vector3.one;
 
         spawnedItem.GetComponent<ClothingItemBehaviour>().UpdateVisuals();
     }
