@@ -16,6 +16,11 @@ public class NPCIntreraction : MonoBehaviour
     public GameObject indicator;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        indicator = transform.GetChild(0).gameObject;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
