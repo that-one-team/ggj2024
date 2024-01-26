@@ -16,17 +16,19 @@ public class SpecialNPCWizard : ScriptableWizard
 
     private void OnWizardCreate()
     {
-        NPCData data = CreateInstance<NPCData>();
-        data.Stats = Stats;
-        data.Name = NPCName;
-        data.Clothes = Clothes;
-
         var path = AssetDatabase.GUIDToAssetPath(AssetDatabase.CreateFolder("Assets/Resources/NPCs", NPCName));
-        AssetDatabase.CreateAsset(data, path + $"/{NPCName}Data.asset");
 
         GameObject go = new(NPCName);
         var npcBehavior = go.AddComponent<NPCBehavior>();
+
+        var data = new NPCData
+        {
+            Stats = Stats,
+            Name = NPCName,
+            Clothes = Clothes
+        };
         npcBehavior.Data = data;
+
         go.SetActive(false);
 
         PrefabUtility.SaveAsPrefabAsset(go, path + $"/{NPCName}.prefab");
@@ -35,6 +37,5 @@ public class SpecialNPCWizard : ScriptableWizard
         DestroyImmediate(go);
 
         EditorUtility.FocusProjectWindow();
-        Selection.activeObject = data;
     }
 }

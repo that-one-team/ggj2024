@@ -4,7 +4,7 @@ using UnityEngine;
 public class NPCSpawner : MonoBehaviour
 {
     public static NPCSpawner Instance { get; private set; }
-    public List<NPCBehavior> NPCPool { get; private set; }
+    public List<NPCBehavior> NPCPool { get; private set; } = new();
 
     [Header("Debug")]
     [SerializeField] private int _maxNPCCount = 20;
@@ -22,12 +22,15 @@ public class NPCSpawner : MonoBehaviour
         {
             Destroy(npc.gameObject);
         }
+
         NPCPool.Clear();
         NPCPool = new(_maxNPCCount);
 
-        foreach (var npc in NPCPool)
+        for (int i = 0; i < _maxNPCCount; i++)
         {
-            npc.Spawn(transform);
+            var spawned = new GameObject("Spawned NPC", typeof(NPCBehavior));
+            var behavior = spawned.GetComponent<NPCBehavior>();
+            behavior.Spawn(transform);
         }
     }
 }

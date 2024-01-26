@@ -1,7 +1,13 @@
 // author: @zsfer
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public struct NPCData
+{
+    public string Name;
+    public HumorStats Stats;
+    public ClothingItemData[] Clothes;
+}
 
 public class NPCBehavior : MonoBehaviour
 {
@@ -20,5 +26,7 @@ public class NPCBehavior : MonoBehaviour
         var hats = Resources.LoadAll<ClothingItemData>("Items/Clothing/Hats");
         var necks = Resources.LoadAll<ClothingItemData>("Items/Clothing/Neckpieces");
         var bodies = Resources.LoadAll<ClothingItemData>("Items/Clothing/Bodies");
+
+        print(species.Length);
     }
 }
