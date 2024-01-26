@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    public GameObject DialougePanel;
-    public Text DialougeText;
-    private int index;
-    public GameObject contbutton;
-    public float wordSpeed;
-    public bool playerIsClose;
+    [SerializeField] GameObject _dialoguePanel;
+    [SerializeField] Text _dialogueText;
+    [SerializeField] GameObject _continueButton;
+    [SerializeField] float _wordSpeed;
+    [SerializeField] GameObject _indicatorUI;
 
-    public GameObject indicator;
-
+    private int _lineIndex;
+    private bool _isPlayerClose;
     private string[] _lines;
 
     private NPCBehavior _behaviour;
@@ -26,7 +25,7 @@ public class NPCInteraction : MonoBehaviour
     private void Start()
     {
         _behaviour = GetComponent<NPCBehavior>();
-        indicator = transform.GetChild(0).gameObject;
+        _indicatorUI = transform.GetChild(0).gameObject;
 
     }
 
@@ -34,57 +33,62 @@ public class NPCInteraction : MonoBehaviour
     {
         if (_lines.Length == 0) return;
 
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerClose && PlayerInteraction.Instance.IsInteracting)
         {
-            if (DialougePanel.activeInHierarchy)
+            if (_dialoguePanel.activeInHierarchy)
             {
-                zeroText();
+                ClearText();
             }
             else
             {
-                DialougePanel.SetActive(true);
+                _dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
 
             PlayerInteraction.Instance.Interact(true);
         }
 
-        if (DialougeText.text == _lines[index])
+        if (_dialogueText.text == _lines[_lineIndex])
         {
-            contbutton.SetActive(true);
+            _continueButton.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
+            {
+                NextLine();
+            }
         }
     }
 
-    public void zeroText()
+    public void ClearText()
     {
-        DialougeText.text = "";
-        index = 0;
-        DialougePanel.SetActive(false);
+        _dialogueText.text = "";
+        _lineIndex = 0;
+        _dialoguePanel.SetActive(false);
         PlayerInteraction.Instance.Interact(false);
     }
 
     IEnumerator Typing()
     {
-        foreach (char letter in _lines[index].ToCharArray())
+        foreach (char letter in _lines[_lineIndex].ToCharArray())
         {
-            DialougeText.text += letter;
-            yield return new WaitForSeconds(wordSpeed);
+            _dialogueText.text += letter;
+            yield return new WaitForSeconds(_wordSpeed);
         }
     }
 
     public void NextLine()
     {
-        contbutton.SetActive(false);
+        _continueButton.SetActive(false);
 
-        if (index < _lines.Length - 1)
+        if (_lineIndex < _lines.Length - 1)
         {
-            index++;
-            DialougeText.text = "";
+            _lineIndex++;
+            _dialogueText.text = "";
             StartCoroutine(Typing());
         }
         else
         {
-            zeroText();
+            ClearText();
         }
     }
 
@@ -92,9 +96,9 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerIsClose = true;
+            _isPlayerClose = true;
             IndicatorOn();
-            zeroText();
+            ClearText();
         }
     }
 
@@ -102,19 +106,19 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerIsClose = false;
+            _isPlayerClose = false;
             IndicatorOff();
-            zeroText();
+            ClearText();
         }
     }
 
     private void IndicatorOn()
     {
-        indicator.SetActive(true);
+        _indicatorUI.SetActive(true);
     }
 
     private void IndicatorOff()
     {
-        indicator.SetActive(false);
+        _indicatorUI.SetActive(false);
     }
 }

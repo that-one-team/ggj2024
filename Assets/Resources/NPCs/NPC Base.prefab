@@ -133,7 +133,7 @@ MonoBehaviour:
   contbutton: {fileID: 0}
   wordSpeed: 0
   playerIsClose: 0
-  indicator: {fileID: 0}
+  indicator: {fileID: 7094120581515413119}
 --- !u!1 &7094120581515413119
 GameObject:
   m_ObjectHideFlags: 0
