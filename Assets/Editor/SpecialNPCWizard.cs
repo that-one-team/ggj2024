@@ -26,7 +26,7 @@ public class SpecialNPCWizard : ScriptableWizard
 
         GameObject go = new(NPCName);
         var npcBehavior = go.AddComponent<NPCBehavior>();
-        npcBehavior.SpecialCharacterData = data;
+        npcBehavior.Data = data;
         go.SetActive(false);
 
         PrefabUtility.SaveAsPrefabAsset(go, path + $"/{NPCName}.prefab");
