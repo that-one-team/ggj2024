@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPCIntreraction : MonoBehaviour
+public class NPCInteraction : MonoBehaviour
 {
     public GameObject DialougePanel;
     public Text DialougeText;
-    public string[] Dialouge;
     private int index;
     public GameObject contbutton;
     public float wordSpeed;
@@ -15,14 +14,26 @@ public class NPCIntreraction : MonoBehaviour
 
     public GameObject indicator;
 
-    // Update is called once per frame
+    private string[] _lines;
+
+    private NPCBehavior _behaviour;
+
+    private void Awake()
+    {
+        _lines = Resources.Load<NPCDialogueData>("DialogueLines").GetMaxStatLines(_behaviour.Data.Stats);
+    }
 
     private void Start()
     {
+        _behaviour = GetComponent<NPCBehavior>();
         indicator = transform.GetChild(0).gameObject;
+
     }
+
     void Update()
     {
+        if (_lines.Length == 0) return;
+
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
         {
             if (DialougePanel.activeInHierarchy)
@@ -38,7 +49,7 @@ public class NPCIntreraction : MonoBehaviour
             PlayerInteraction.Instance.Interact(true);
         }
 
-        if (DialougeText.text == Dialouge[index])
+        if (DialougeText.text == _lines[index])
         {
             contbutton.SetActive(true);
         }
@@ -54,7 +65,7 @@ public class NPCIntreraction : MonoBehaviour
 
     IEnumerator Typing()
     {
-        foreach (char letter in Dialouge[index].ToCharArray())
+        foreach (char letter in _lines[index].ToCharArray())
         {
             DialougeText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
@@ -65,7 +76,7 @@ public class NPCIntreraction : MonoBehaviour
     {
         contbutton.SetActive(false);
 
-        if (index < Dialouge.Length - 1)
+        if (index < _lines.Length - 1)
         {
             index++;
             DialougeText.text = "";
