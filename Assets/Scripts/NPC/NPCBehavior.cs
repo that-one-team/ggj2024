@@ -35,17 +35,16 @@ public class NPCBehavior : MonoBehaviour
 
         // look through assets inside resources/items/clothing;
         SpawnClothingItem("Species");
-        SpawnClothingItem("Hats");
-        SpawnClothingItem("Neckpieces");
-        SpawnClothingItem("Bodies");
+        SpawnClothingItem("Hats", 0.02f);
+        SpawnClothingItem("Neckpieces", 0.02f);
+        SpawnClothingItem("Bodies", 0.01f);
 
-        ClothingItemData SpawnClothingItem(string clothingName)
+        ClothingItemData SpawnClothingItem(string clothingName, float offset = 0)
         {
             var item = Resources.LoadAll<ClothingItemData>("Items/Clothing/" + clothingName).SelectRandom();
             var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItemBehaviour));
-            spawnedItem.transform.position = transform.position;
+            spawnedItem.transform.position = transform.position + (Vector3.forward * -offset);
             spawnedItem.transform.parent = transform;
-            // spawnedItem.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
             spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
             spawnedItem.transform.localScale = Vector3.one;
 
