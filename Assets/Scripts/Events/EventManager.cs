@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
 [System.Serializable]
 public class EventTest
 {
@@ -30,6 +31,7 @@ public class EventManager : MonoBehaviour
     private bool eventActive;
 
     public GameObject phone;
+    public float speed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -80,9 +82,18 @@ public class EventManager : MonoBehaviour
 
     public IEnumerator Timer()
     {
-        phone.SetActive(true);
+        PhoneOn();
         yield return new WaitForSeconds(6f);
-        phone.SetActive(false);
+
+    }
+
+    public void PhoneOn()
+    {
+        // Calculate the new position based on the current position and speed
+        float newPosition = transform.position.x - speed * Time.deltaTime;
+
+        // Update the position of the GameObject
+        phone.transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
     }
 
 }
