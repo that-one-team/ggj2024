@@ -20,3 +20,4 @@ MonoBehaviour:
     Satire: 0
     Ironic: 0
   ReputationEffect: -20
+  EventChance: 50

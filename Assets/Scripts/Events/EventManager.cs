@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[System.Serializable]
+public class EventTest
+{
+    public string Name;
+    public HumorStats StatsAffected;
+    public float ReputationEffect;
+    public float EventChance;
+    public float CurrentEventChance;
+    public float EventChanceAdditional;
+}
+
 public class EventManager : MonoBehaviour
 {
-    public EventData EventData;
+    [SerializeField] List<EventTest> _events;
+
+
+    // private EventData[] _events;
+    // public EventData EventData;
     public PlayerReputation playerReputation;
 
     //For Event Proc
     public float cooldownDuration;
     private float nextGenerateTime;
     private System.Random random = new System.Random();
-    private float eventChance;
     private bool eventActive;
 
     public GameObject phone;
-
-    
-    
 
     // Start is called before the first frame update
     void Start()
     {
         playerReputation = GameObject.Find("Player").GetComponent<PlayerReputation>();
-        eventChance = 5;
+
+        // _events = Resources.LoadAll<EventData>("Events");
     }
 
     // Update is called once per frame
@@ -34,33 +46,30 @@ public class EventManager : MonoBehaviour
 
     }
 
-    public void RunEvent()
+    public void RunEvent(EventTest evt)
     {
-        playerReputation.reputation += EventData.ReputationEffect;
+        playerReputation.reputation += evt.ReputationEffect;
     }
 
     public void EventProc()
     {
-        
-
         if (Time.time >= nextGenerateTime)
         {
+            var randomEvent = _events.SelectRandom();
             int generatedNumber = GenerateNumber();
             Debug.Log(generatedNumber);
             nextGenerateTime = Time.time + cooldownDuration;
 
-            if (generatedNumber <= eventChance)
+            if (generatedNumber <= randomEvent.CurrentEventChance)
             {
-                FakeNews();
+                RunEvent(randomEvent);
                 StartCoroutine(Timer());
-                eventChance = 5;
+                randomEvent.CurrentEventChance = randomEvent.EventChance;
             }
             else
             {
-                eventChance += 5;
+                randomEvent.CurrentEventChance += randomEvent.EventChanceAdditional;
             }
-                
-            
         }
     }
 
@@ -69,17 +78,11 @@ public class EventManager : MonoBehaviour
         return random.Next(1, 101);
     }
 
-    public void FakeNews()
-    {
-        phone.SetActive(true);
-        RunEvent();
-
-    }
-
     public IEnumerator Timer()
     {
+        phone.SetActive(true);
         yield return new WaitForSeconds(6f);
         phone.SetActive(false);
     }
-   
+
 }

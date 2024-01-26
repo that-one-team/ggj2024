@@ -8,4 +8,6 @@ public class EventData : ScriptableObject
     public string EventName;
     public HumorStats StatsEffect;
     public float ReputationEffect;
+
+    public float EventChance;
 }
