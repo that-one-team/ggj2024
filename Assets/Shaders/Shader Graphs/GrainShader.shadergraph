@@ -4367,10 +4367,10 @@
     "m_Guid": {
         "m_GuidSerialized": "8881bee1-c5da-457f-b0ff-5e8fd331a5a6"
     },
-    "m_Name": "DitherAmount",
+    "m_Name": "Dither Amount",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "DitherAmount",
-    "m_DefaultReferenceName": "_DitherAmount",
+    "m_RefNameGeneratedByDisplayName": "Dither Amount",
+    "m_DefaultReferenceName": "_Dither_Amount",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -5913,7 +5913,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "f75e8d3bdc064b41b14af36a951272f1",
     "m_Id": 0,
-    "m_DisplayName": "DitherAmount",
+    "m_DisplayName": "Dither Amount",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
