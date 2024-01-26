@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: neck test3
   Stats:
-    Dark: 0
-    Aggressive: 0
-    Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Dark: 123
+    Aggressive: 23
+    Slapstick: 5
+    Satire: 2
+    Ironic: 1
   AnimationController: {fileID: 0}

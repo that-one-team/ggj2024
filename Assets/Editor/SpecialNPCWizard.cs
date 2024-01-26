@@ -1,6 +1,7 @@
 // author: @zsfer
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 
 public class SpecialNPCWizard : ScriptableWizard
 {
@@ -25,7 +26,7 @@ public class SpecialNPCWizard : ScriptableWizard
         {
             Stats = Stats,
             Name = NPCName,
-            Clothes = Clothes
+            Clothes = Clothes.ToList()
         };
         npcBehavior.Data = data;
 

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: s1
   Stats:
-    Dark: 0
-    Aggressive: 0
-    Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Dark: 23
+    Aggressive: 230
+    Slapstick: 5
+    Satire: 77
+    Ironic: 234
   AnimationController: {fileID: 0}

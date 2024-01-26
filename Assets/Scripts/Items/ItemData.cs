@@ -7,5 +7,6 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public string Name;
-    public HumorStats StatsModifier;
+    public Sprite Sprite;
+    public HumorStats AffectedStats;
 }

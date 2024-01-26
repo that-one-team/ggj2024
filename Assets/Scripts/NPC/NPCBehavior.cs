@@ -1,12 +1,15 @@
 // author: @zsfer
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public struct NPCData
+public class NPCData
 {
     public string Name;
     public HumorStats Stats;
-    public ClothingItemData[] Clothes;
+    public List<ClothingItemData> Clothes;
+
 }
 
 public class NPCBehavior : MonoBehaviour
@@ -21,12 +24,30 @@ public class NPCBehavior : MonoBehaviour
 
     void GenerateOutfit()
     {
-        // look through assets inside resources/items/clothing
-        var species = Resources.LoadAll<ClothingItemData>("Items/Clothing/Species");
-        var hats = Resources.LoadAll<ClothingItemData>("Items/Clothing/Hats");
-        var necks = Resources.LoadAll<ClothingItemData>("Items/Clothing/Neckpieces");
-        var bodies = Resources.LoadAll<ClothingItemData>("Items/Clothing/Bodies");
+        Data = new()
+        {
+            Name = MiscItems.NPCNames.SelectRandom(),
+            Clothes = new()
+        };
 
-        print(species.Length);
+        transform.name = Data.Name;
+
+        // look through assets inside resources/items/clothing;
+        SpawnClothingItem("Species", 0);
+        SpawnClothingItem("Hats", 2);
+        SpawnClothingItem("Neckpieces", 2);
+        SpawnClothingItem("Bodies", 1);
+
+        ClothingItemData SpawnClothingItem(string clothingName, int sortingOrder)
+        {
+            var item = Resources.LoadAll<ClothingItemData>("Items/Clothing/" + clothingName).SelectRandom();
+            var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItem));
+            spawnedItem.transform.parent = transform;
+            spawnedItem.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+            spawnedItem.GetComponent<ClothingItem>().Data = item;
+
+            Data.Clothes.Add(item);
+            return item;
+        }
     }
 }

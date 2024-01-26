@@ -6,5 +6,6 @@ public class ClothingItemData : ScriptableObject
 {
     public string ItemName;
     public HumorStats Stats;
+    public Sprite Sprite;
     public Animator AnimationController;
 }

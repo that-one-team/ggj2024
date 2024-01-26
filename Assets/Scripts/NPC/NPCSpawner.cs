@@ -6,6 +6,8 @@ public class NPCSpawner : MonoBehaviour
     public static NPCSpawner Instance { get; private set; }
     public List<NPCBehavior> NPCPool { get; private set; } = new();
 
+    [field: SerializeField] public List<GameObject> SpawnZones { get; private set; }
+
     [Header("Debug")]
     [SerializeField] private int _maxNPCCount = 20;
     [SerializeField] private bool _spawnOnStart;
@@ -31,6 +33,7 @@ public class NPCSpawner : MonoBehaviour
             var spawned = new GameObject("Spawned NPC", typeof(NPCBehavior));
             var behavior = spawned.GetComponent<NPCBehavior>();
             behavior.Spawn(transform);
+            NPCPool.Add(behavior);
         }
     }
 }

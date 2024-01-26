@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Body 1
   Stats:
-    Dark: 0
-    Aggressive: 0
-    Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Dark: 2
+    Aggressive: 2
+    Slapstick: 1
+    Satire: 5
+    Ironic: 7
+  Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   AnimationController: {fileID: 0}

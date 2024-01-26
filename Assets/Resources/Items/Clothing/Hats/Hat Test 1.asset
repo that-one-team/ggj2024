@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Hat test
   Stats:
-    Dark: 0
-    Aggressive: 0
-    Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Dark: 3
+    Aggressive: 1
+    Slapstick: 5
+    Satire: 23
+    Ironic: 2
   AnimationController: {fileID: 0}
