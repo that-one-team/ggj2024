@@ -690,9 +690,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75eb610651208746984491b83571cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EventData: {fileID: 11400000, guid: 501691ee84b5ae544b30962c51ce8670, type: 2}
+  _events:
+  - Name: Fake news
+    StatsAffected:
+      Dark: 0
+      Aggressive: 0
+      Slapstick: 0
+      Satire: 0
+      Ironic: 0
+    ReputationEffect: 0
+    EventChance: 5
+    EventChanceAdditional: 5
+  - Name: Homophobic tweets
+    StatsAffected:
+      Dark: 0
+      Aggressive: 0
+      Slapstick: 0
+      Satire: 0
+      Ironic: 0
+    ReputationEffect: 0
+    EventChance: 50
+    EventChanceAdditional: 8
   playerReputation: {fileID: 0}
-  cooldownDuration: 10
+  cooldownDuration: 1
   phone: {fileID: 155181078}
 --- !u!1 &983924199
 GameObject:
