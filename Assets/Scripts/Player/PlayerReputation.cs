@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reputation : MonoBehaviour
+public class PlayerReputation : MonoBehaviour
 {
     public float reputation;
     // Start is called before the first frame update
