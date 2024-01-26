@@ -21,3 +21,4 @@ MonoBehaviour:
     Ironic: 0
   Sprite: {fileID: 21300000, guid: 75e35367c07f5cb4dbab0196baa83261, type: 3}
   AnimationController: {fileID: 0}
+  Offset: 0.01

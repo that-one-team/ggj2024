@@ -8,4 +8,5 @@ public class ClothingItemData : ScriptableObject
     public HumorStats Stats;
     public Sprite Sprite;
     public Animator AnimationController;
+    public float Offset;
 }

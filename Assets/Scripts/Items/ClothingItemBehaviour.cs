@@ -7,6 +7,11 @@ public class ClothingItemBehaviour : MonoBehaviour
 
     private void Start()
     {
+        UpdateVisuals();
+    }
+
+    public void UpdateVisuals()
+    {
         var renderer = GetComponent<SpriteRenderer>();
         name = Data.ItemName;
 
@@ -14,5 +19,6 @@ public class ClothingItemBehaviour : MonoBehaviour
             renderer.sprite = Data.Sprite;
 
         transform.localScale = Vector3.one;
+
     }
 }

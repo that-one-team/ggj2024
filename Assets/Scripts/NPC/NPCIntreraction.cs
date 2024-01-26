@@ -34,6 +34,8 @@ public class NPCIntreraction : MonoBehaviour
                 DialougePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
+
+            PlayerInteraction.Instance.Interact(true);
         }
 
         if (DialougeText.text == Dialouge[index])
@@ -47,6 +49,7 @@ public class NPCIntreraction : MonoBehaviour
         DialougeText.text = "";
         index = 0;
         DialougePanel.SetActive(false);
+        PlayerInteraction.Instance.Interact(false);
     }
 
     IEnumerator Typing()

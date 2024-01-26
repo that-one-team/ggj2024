@@ -9,7 +9,6 @@ public class NPCSpawner : MonoBehaviour
     [field: SerializeField] public List<GameObject> SpawnZones { get; private set; }
 
     [Header("Debug")]
-    [SerializeField] private float _spriteScale = 0.2f;
     [SerializeField] private int _maxNPCCount = 20;
     [SerializeField] private bool _spawnOnStart;
 
@@ -36,7 +35,6 @@ public class NPCSpawner : MonoBehaviour
             var spawnZone = SpawnZones.SelectRandom();
             var position = spawnZone.GetComponent<SpawnZone>().GetRandomPosition();
 
-            spawned.transform.localScale = new Vector3(_spriteScale, _spriteScale, 1);
             spawned.transform.position = position;
             var behavior = spawned.GetComponent<NPCBehavior>();
             behavior.Spawn(spawnZone.transform);

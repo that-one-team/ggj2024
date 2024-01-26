@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class NPCData
@@ -9,23 +10,32 @@ public class NPCData
     public string Name;
     public HumorStats Stats;
     public List<ClothingItemData> Clothes;
-
 }
 
-[RequireComponent(typeof(CapsuleCollider))]
+public enum NPCState
+{
+    IDLE = 0,
+    MOVING = 1,
+    INTERACTING = 2
+}
+
+
+[RequireComponent(typeof(CapsuleCollider), typeof(NPCMovement))]
 public class NPCBehavior : MonoBehaviour
 {
     [field: SerializeField] public NPCData Data { get; set; }
 
     public void Spawn(Transform parent)
     {
+        transform.localScale = new Vector3(0.17f, 0.17f, 1);
         transform.parent = parent;
+        GetComponent<CapsuleCollider>().radius = 1;
         GenerateOutfit();
     }
 
     void GenerateOutfit()
     {
-        Data = new()
+        Data ??= new()
         {
             Name = MiscItems.NPCNames.SelectRandom(),
             Clothes = new()
@@ -34,22 +44,42 @@ public class NPCBehavior : MonoBehaviour
         transform.name = Data.Name;
 
         // look through assets inside resources/items/clothing;
-        SpawnClothingItem("Species");
-        SpawnClothingItem("Hats", 0.02f);
-        SpawnClothingItem("Neckpieces", 0.02f);
-        SpawnClothingItem("Bodies", 0.01f);
 
-        ClothingItemData SpawnClothingItem(string clothingName, float offset = 0)
+        if (Data.Clothes.Count == 0)
+        {
+            SpawnRandomClothing("Species");
+            SpawnRandomClothing("Hats", 0.02f);
+            SpawnRandomClothing("Neckpieces", 0.02f);
+            SpawnRandomClothing("Bodies", 0.01f);
+        }
+        else
+        {
+            foreach (var clothes in Data.Clothes)
+            {
+                SpawnClothingItem(clothes);
+            }
+        }
+
+        ClothingItemData SpawnRandomClothing(string clothingName, float offset = 0)
         {
             var item = Resources.LoadAll<ClothingItemData>("Items/Clothing/" + clothingName).SelectRandom();
-            var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItemBehaviour));
-            spawnedItem.transform.position = transform.position + (Vector3.forward * -offset);
-            spawnedItem.transform.parent = transform;
-            spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
-            spawnedItem.transform.localScale = Vector3.one;
+            SpawnClothingItem(item, offset);
 
             Data.Clothes.Add(item);
             return item;
         }
     }
+
+    void SpawnClothingItem(ClothingItemData item, float offset = 0)
+    {
+        var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItemBehaviour));
+        spawnedItem.transform.position = transform.position + (Vector3.forward * -item.Offset);
+        spawnedItem.transform.parent = transform;
+        spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
+        spawnedItem.transform.localScale = Vector3.one;
+
+        spawnedItem.GetComponent<ClothingItemBehaviour>().UpdateVisuals();
+    }
+
 }
+
