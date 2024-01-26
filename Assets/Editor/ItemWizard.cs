@@ -15,8 +15,22 @@ public class ItemWizard : ScriptableWizard
 
     private void OnWizardCreate()
     {
-        var path = AssetDatabase.GUIDToAssetPath(AssetDatabase.CreateFolder("Assets/Resources/Items/Humor", ItemName));
+        var path = "Assets/Resources/Items/Humor/";
+        var prefabsPath = "Assets/Resources/Prefabs/Items";
 
-        // GameObject go =
+        GameObject go = new(ItemName);
+        var behavior = go.AddComponent<ItemBehaviour>();
+
+        var data = CreateInstance<ItemData>();
+        data.Name = ItemName;
+        data.AffectedStats = Stats;
+        data.Sprite = InventoryIcon;
+
+        AssetDatabase.CreateAsset(data, path + $"/{ItemName}.asset");
+        behavior.UpdateVisuals(data);
+
+        PrefabUtility.SaveAsPrefabAsset(go, prefabsPath + $"/{ItemName}.prefab");
+
+        AssetDatabase.SaveAssets();
     }
 }

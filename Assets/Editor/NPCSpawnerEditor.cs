@@ -11,7 +11,10 @@ public class NPCSpawnerEditor : Editor
         if (GUILayout.Button("Create Zone"))
         {
             GameObject spawnZone = new("Spawn Zone", typeof(SpawnZone));
+            spawnZone.transform.parent = targ.transform;
             targ.SpawnZones.Add(spawnZone);
+
+            Selection.activeGameObject = spawnZone;
         }
     }
 }

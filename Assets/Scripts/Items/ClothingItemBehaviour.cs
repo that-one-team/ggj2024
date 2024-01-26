@@ -12,5 +12,7 @@ public class ClothingItemBehaviour : MonoBehaviour
 
         if (Data.Sprite != null)
             renderer.sprite = Data.Sprite;
+
+        transform.localScale = Vector3.one;
     }
 }
