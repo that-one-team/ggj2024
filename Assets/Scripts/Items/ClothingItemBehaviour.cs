@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
-public class ClothingItem : MonoBehaviour
+public class ClothingItemBehaviour : MonoBehaviour
 {
     [field: SerializeField] public ClothingItemData Data { get; set; }
 

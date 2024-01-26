@@ -41,10 +41,10 @@ public class NPCBehavior : MonoBehaviour
         ClothingItemData SpawnClothingItem(string clothingName, int sortingOrder)
         {
             var item = Resources.LoadAll<ClothingItemData>("Items/Clothing/" + clothingName).SelectRandom();
-            var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItem));
+            var spawnedItem = new GameObject(item.ItemName, typeof(ClothingItemBehaviour));
             spawnedItem.transform.parent = transform;
             spawnedItem.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
-            spawnedItem.GetComponent<ClothingItem>().Data = item;
+            spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
 
             Data.Clothes.Add(item);
             return item;
