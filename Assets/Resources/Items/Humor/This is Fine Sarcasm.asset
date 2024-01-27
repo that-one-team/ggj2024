@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87fb7710515303a4aa075a26dc9e2103, type: 3}
-  m_Name: Oddly Noose shaped Rope
+  m_Name: This is Fine Sarcasm
   m_EditorClassIdentifier: 
-  Name: Oddly Noose shaped Rope
+  Name: This is Fine  Sarcasm
   Sprite: {fileID: 0}
   AffectedStats:
-    Dark: 5
-    Aggressive: -1
-    Slapstick: -3
-    Satire: -1
-    Ironic: -2
+    Dark: 1
+    Aggressive: 1
+    Slapstick: -2
+    Satire: 5
+    Ironic: -4
   IsConsumable: 0
