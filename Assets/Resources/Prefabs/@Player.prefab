@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 2399820846402231699}
   - component: {fileID: 8514701690195377416}
   - component: {fileID: 2309613933918083597}
+  - component: {fileID: 4375429363282128700}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -270,6 +271,27 @@ MonoBehaviour:
   _charsPerSecond: 5
   _choicesPanel: {fileID: 0}
   _choicePrefab: {fileID: 0}
+--- !u!135 &4375429363282128700
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669899260100632965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5292171561429438726
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1793964385055728903
 RectTransform:
   m_ObjectHideFlags: 0
