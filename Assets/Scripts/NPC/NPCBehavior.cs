@@ -94,7 +94,6 @@ public class NPCBehavior : MonoBehaviour
         spawnedItem.transform.position = transform.position + (Vector3.forward * -item.Offset);
         spawnedItem.transform.parent = transform;
         spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
-        // spawnedItem.transform.localScale = Vector3.one;
 
         spawnedItem.GetComponent<ClothingItemBehaviour>().UpdateVisuals();
     }
