@@ -33145,7 +33145,7 @@ GameObject:
   - component: {fileID: 1476127779}
   - component: {fileID: 1476127778}
   m_Layer: 0
-  m_Name: Placeholder
+  m_Name: Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
