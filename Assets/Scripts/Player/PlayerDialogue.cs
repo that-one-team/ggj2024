@@ -34,8 +34,6 @@ public class PlayerDialogue : MonoBehaviour
 
     public void StartConversation(GameObject target)
     {
-        print("start");
-
         var _behaviour = target.GetComponent<NPCBehavior>();
         _behaviour.GetComponent<NPCMovement>().ProcessState((int)NPCState.INTERACTING);
 
@@ -81,7 +79,8 @@ public class PlayerDialogue : MonoBehaviour
             ShowChoices();
         }
     }
-
+    // TODO hook up @Tatanagi inventory system to show items available :)
+    // prepare for animation/cutscene use
     public void ShowChoices()
     {
         // _choicesPanel.SetActive(true);
