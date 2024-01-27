@@ -32,7 +32,7 @@ public class NPCMovement : MonoBehaviour
         else
             ProcessState(0);
 
-        print($"[AI]: {name}: Change state -> {state}");
+        // print($"[AI]: {name}: Change state -> {state}");
     }
 
     IEnumerator IdleState()
@@ -53,7 +53,9 @@ public class NPCMovement : MonoBehaviour
 
     IEnumerator InteractingState()
     {
+        _agent.isStopped = true;
         yield return new WaitUntil(() => !PlayerInteraction.Instance.IsInteracting);
+        _agent.isStopped = false;
     }
 
     float RandomTime() => Random.Range(3, 10);
