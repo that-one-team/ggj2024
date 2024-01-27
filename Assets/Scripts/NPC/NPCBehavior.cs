@@ -26,6 +26,7 @@ public enum NPCState
 public class NPCBehavior : MonoBehaviour
 {
     [field: SerializeField] public NPCData Data { get; set; }
+    public bool HasInteractedAlready { get; set; }
 
     [Header("Debug")]
     [SerializeField] TextMeshProUGUI _statsDebug;
@@ -100,8 +101,9 @@ public class NPCBehavior : MonoBehaviour
 
     void Update()
     {
-        _statsDebug.text = $"{Data.Stats}";
+        _statsDebug.text = $"{Data.Stats} - [MOOD] {GetComponent<NPCMood>().CurrentMood}";
     }
+
 
 }
 

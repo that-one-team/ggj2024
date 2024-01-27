@@ -5,16 +5,10 @@ using UnityEngine;
 
 public class PlayerSocialBattery : MonoBehaviour
 {
-    public float socialBattery;
-    // Start is called before the first frame update
-    void Start()
-    {
-        socialBattery = 100f;
-    }
+    public float SocialBattery = 100;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (SocialBattery <= 0) GameManager.Instance.GameOver(OverReasons.NO_BAT);
     }
 }

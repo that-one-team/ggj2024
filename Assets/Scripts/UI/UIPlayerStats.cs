@@ -21,7 +21,7 @@ public class UIPlayerStats : MonoBehaviour
         playerReputation = GameObject.Find("Player").GetComponent<PlayerReputation>();
         playerSocialBattery = GameObject.Find("Player").GetComponent<PlayerSocialBattery>();
 
-        currentSocialBattery = playerSocialBattery.socialBattery;
+        currentSocialBattery = playerSocialBattery.SocialBattery;
         socialBattery.maxValue = maxSocialBattery;
         socialBattery.value = currentSocialBattery;
     }
@@ -29,11 +29,9 @@ public class UIPlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSocialBattery = playerSocialBattery.socialBattery;
-        reputation.text = "Reputation: " + playerReputation.reputation;
+        currentSocialBattery = playerSocialBattery.SocialBattery;
+        reputation.text = Mathf.RoundToInt(playerReputation.Reputation).ToString();
 
         socialBattery.value = currentSocialBattery;
-
-       
     }
 }

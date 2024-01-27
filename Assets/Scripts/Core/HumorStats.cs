@@ -8,13 +8,15 @@ public class HumorStats
     public float Satire;
     public float Ironic;
 
-    public void Add(HumorStats stats)
+    public bool Add(HumorStats stats)
     {
         Dark += stats.Dark;
         Aggressive += stats.Aggressive;
         Slapstick += stats.Slapstick;
         Satire += stats.Satire;
         Ironic += stats.Ironic;
+
+        return GetMaxStat(stats).StatName == GetMaxStat(this).StatName;
     }
 
     public static (string StatName, float MaxValue) GetMaxStat(HumorStats stats)

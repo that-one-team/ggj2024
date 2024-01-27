@@ -20,15 +20,17 @@ public class PlayerDialogue : MonoBehaviour
     [SerializeField] GameObject _choicesPanel;
     [SerializeField] GameObject _choicePrefab;
 
+    NPCBehavior _target;
+
     private string _line;
 
     public void StartConversation(GameObject target)
     {
         Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera(PlayerInteraction.Instance.transform, transform);
-        var _behaviour = target.GetComponent<NPCBehavior>();
-        _behaviour.GetComponent<NPCMovement>().ProcessState((int)NPCState.INTERACTING);
+        _target = target.GetComponent<NPCBehavior>();
+        _target.GetComponent<NPCMovement>().ProcessState((int)NPCState.INTERACTING);
 
-        _line = _dialogueData.GetMaxStatLines(_behaviour.Data.Stats).SelectRandom();
+        _line = _dialogueData.GetMaxStatLines(_target.Data.Stats).SelectRandom();
 
         _dialoguePanel.SetActive(true);
         ClearText();
@@ -91,6 +93,7 @@ public class PlayerDialogue : MonoBehaviour
             var spawned = Instantiate(_choicePrefab, _choicesPanel.transform).GetComponent<UIInventoryItem>();
             spawned.Data = item;
             spawned.IsInteractable = true;
+            spawned.Target = _target;
             spawned.OnInteract += () =>
             {
                 EndConversation();
