@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SCN_Kyle.unity
+    guid: 8db13c22b3ef1244ebe506d13186d248
+  - enabled: 1
+    path: Assets/Scenes/Test Dialougue.unity
+    guid: 63b884f9c8d76894fbb82a36da017326
+  - enabled: 1
     path: Assets/Scenes/SCN_Master.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
