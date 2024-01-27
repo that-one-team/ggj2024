@@ -51,6 +51,9 @@ TagManager:
   - name: Walls (Behind)
     uniqueID: 3066076247
     locked: 0
+  - name: locker
+    uniqueID: 3666673
+    locked: 0
   - name: Walls (Front)
     uniqueID: 952048049
     locked: 0
