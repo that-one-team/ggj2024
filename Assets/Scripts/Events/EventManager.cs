@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -30,15 +32,32 @@ public class EventManager : MonoBehaviour
     private System.Random random = new System.Random();
     private bool eventActive;
 
-    public GameObject phone;
+    // For Phone UI
+    public Image imageToScale;
     public float speed = 2.0f;
+    public Vector3 phoneTargetPos;
+    public Vector3 phoneDefaultPos;
+
+    // For Phone Notification UI
+    public GameObject notification1;
+    public GameObject notification2;
+    public GameObject notification3;
+    public GameObject notification4;
+    public GameObject notif1;
+    public GameObject notif2;
+    public GameObject notif3;
+
+    // For Sound Effects
+    public AudioSource audioSource;
+
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerReputation = GameObject.Find("Player").GetComponent<PlayerReputation>();
-
-        // _events = Resources.LoadAll<EventData>("Events");
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,7 +76,7 @@ public class EventManager : MonoBehaviour
     {
         if (Time.time >= nextGenerateTime)
         {
-            var randomEvent = _events.SelectRandom();
+            var randomEvent = _events.SelectRandom(); 
             int generatedNumber = GenerateNumber();
             Debug.Log(generatedNumber);
             nextGenerateTime = Time.time + cooldownDuration;
@@ -66,7 +85,11 @@ public class EventManager : MonoBehaviour
             {
                 RunEvent(randomEvent);
                 StartCoroutine(Timer());
-                randomEvent.CurrentEventChance = randomEvent.EventChance;
+                for (int i = 0; i < _events.Count; i++)
+                {
+                    _events[i].CurrentEventChance = _events[i].EventChance;
+                }
+                
             }
             else
             {
@@ -84,16 +107,62 @@ public class EventManager : MonoBehaviour
     {
         PhoneOn();
         yield return new WaitForSeconds(6f);
+        PhoneOff();
+        yield return new WaitForSeconds(2f);
 
-    }
+        
+
+        notif1.SetActive(false);
+        notif2.SetActive(false);
+        notif3.SetActive(false);
+
+    } 
 
     public void PhoneOn()
     {
-        // Calculate the new position based on the current position and speed
-        float newPosition = transform.position.x - speed * Time.deltaTime;
+        imageToScale.transform.DOLocalMoveX(250f, 0.5f);
+        StartCoroutine(FadeIn());
+    }
 
-        // Update the position of the GameObject
-        phone.transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
+    public void PhoneOff()
+    {
+        imageToScale.transform.DOLocalMoveX(550f, 0.5f);
+    }
+
+    public IEnumerator FadeIn()
+    {
+        var randomNumber1 = random.Next(1, 101);
+        var randomNumber2 = random.Next(1, 101);
+
+        if (randomNumber1 <= 50)
+        {
+            notif1 = notification1;
+        }
+        else
+        {
+            notif1 = notification2;
+        }
+
+        if (randomNumber2 <= 50)
+        {
+            notif2 = notification3;
+        }
+        else
+        {
+            notif2 = notification4;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        audioSource.Play();
+        notif1.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        audioSource.Play();
+        notif2.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        audioSource.Play();
+        notif3.SetActive(true);
+
+
     }
 
 }
