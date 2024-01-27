@@ -6,4 +6,9 @@ using UnityEngine;
 public class PlayerSocialBattery : MonoBehaviour
 {
     public float SocialBattery = 100;
+
+    void Update()
+    {
+        if (SocialBattery <= 0) GameManager.Instance.GameOver(OverReasons.NO_BAT);
+    }
 }
