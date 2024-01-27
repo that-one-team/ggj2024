@@ -54,4 +54,9 @@ public class HumorStats
 
         return (maxStatName, maxValue);
     }
+
+    public override string ToString()
+    {
+        return $"{Dark}|{Aggressive}|{Slapstick}|{Satire}|{Ironic}";
+    }
 }
