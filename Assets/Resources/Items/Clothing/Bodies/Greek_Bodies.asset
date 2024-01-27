@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ee6ef6defc4899438af11b4d5961124, type: 3}
-  m_Name: Fancy Flipino_Bodies
+  m_Name: Greek_Bodies
   m_EditorClassIdentifier: 
-  ItemName: Fancy Flipino_Bodies
+  ItemName: Greek_body
   Stats:
     Dark: 0
-    Aggressive: 0
-    Slapstick: 0
-    Satire: 0
+    Aggressive: 0.25
+    Slapstick: 0.5
+    Satire: 3
     Ironic: 0
-  Sprite: {fileID: 21300000, guid: 63b91bafdad7c8f49b1e474ecd3a5576, type: 3}
+  Sprite: {fileID: 21300000, guid: d6022572d0d5007499817a3367002242, type: 3}
   AnimationController: {fileID: 0}
   Offset: 0

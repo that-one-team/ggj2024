@@ -35,6 +35,8 @@ public class NPCBehavior : MonoBehaviour
         transform.name = Data.Name;
         GetComponent<CapsuleCollider>().radius = 1;
         GenerateOutfit();
+
+        Data.Stats = GetHumorSum();
     }
 
     public HumorStats GetHumorSum()
@@ -99,7 +101,7 @@ public class NPCBehavior : MonoBehaviour
 
     void Update()
     {
-        _statsDebug.text = $"{Data.Stats.ToString()}";
+        _statsDebug.text = $"{Data.Stats}";
     }
 
 }
