@@ -100,7 +100,7 @@ public class NPCBehavior : MonoBehaviour
 
     void Update()
     {
-        _statsDebug.text = $"{Data.Stats}";
+        _statsDebug.text = $"{Data.Stats} - [MOOD] {GetComponent<NPCMood>().CurrentMood}";
     }
 
 }

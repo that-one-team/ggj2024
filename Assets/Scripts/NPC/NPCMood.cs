@@ -17,6 +17,7 @@ public class NPCMood : MonoBehaviour
     [SerializeField] private GameObject _moodBubble;
     [SerializeField] private Image _emoteIcon;
     [SerializeField] private Mood[] _moods;
+    [SerializeField] private Sprite _confusedEmote;
 
     private void Start()
     {
@@ -25,12 +26,19 @@ public class NPCMood : MonoBehaviour
 
     public void AddMood(float val)
     {
-        SetMood(CurrentMood + val);
+        print(val);
+        bool showConfused = val < 0;
+        SetMood(CurrentMood + val, showConfused ? _confusedEmote : _moods[0].Emote);
     }
 
-    void SetMood(float value)
+    void SetMood(float value, Sprite emote = null)
     {
         CurrentMood = value;
+        if (emote != null)
+        {
+            StartCoroutine(ShowEmote(emote));
+            return;
+        }
 
         foreach (var mood in _moods)
         {
@@ -49,8 +57,15 @@ public class NPCMood : MonoBehaviour
         {
             _moodBubble.SetActive(false);
             yield return new WaitForSeconds(Random.Range(10, 20));
-            _moodBubble.SetActive(true);
-            yield return new WaitForSeconds(5);
+            yield return ShowEmote(_emoteIcon.sprite);
         }
+    }
+
+    IEnumerator ShowEmote(Sprite emote)
+    {
+        _emoteIcon.sprite = emote;
+        _moodBubble.SetActive(true);
+        yield return new WaitForSeconds(5);
+        _moodBubble.SetActive(false);
     }
 }

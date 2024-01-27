@@ -12,6 +12,8 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public delegate void InteractAction();
     public InteractAction OnInteract;
 
+    public NPCBehavior Target { get; set; }
+
     [SerializeField] private GameObject _tooltip;
     [SerializeField] private TextMeshProUGUI _tooltipText;
 
@@ -43,7 +45,9 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!IsInteractable) return;
-        PlayerInventory.Instance.UseItem(Data);
+
+        PlayerInventory.Instance.UseItem(Data, Target);
+
         OnInteract();
     }
 }

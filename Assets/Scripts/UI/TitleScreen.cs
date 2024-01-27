@@ -7,16 +7,23 @@ public class TitleButtons : MonoBehaviour
 {
     public GameObject TitleInterface, StoryText;
 
-    //Button For Start of the Story
     public void StoryButton()
     {
         TitleInterface.SetActive(false);
         StoryText.SetActive(true);
     }
-    //Start of The Dialogue 
-    public void Start_Of_The_Game()
+
+    public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartGame();
+        }
+    }
+
 }

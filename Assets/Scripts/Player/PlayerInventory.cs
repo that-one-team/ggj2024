@@ -53,11 +53,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void UseItem(ItemData item)
+    public void UseItem(ItemData item, NPCBehavior targetNPC = null)
     {
         if (!Items.Contains(item)) return;
 
-        // apply stats and stuff
+        var isNegativelyAffected = HumorStats.GetMaxStat(item.AffectedStats).StatName != HumorStats.GetMaxStat(targetNPC.Data.Stats).StatName;
+        var moodImpact = isNegativelyAffected ? Random.Range(-40, -10) : Random.Range(30, 50);
+        targetNPC.GetComponent<NPCMood>().AddMood(moodImpact);
 
         if (item.IsConsumable) RemoveItem(item);
     }
