@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Pinoy Pride_Neckpieces
   Stats:
-    Dark: 0
+    Dark: 0.5
     Aggressive: 0
     Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Satire: 0.5
+    Ironic: 4
   Sprite: {fileID: 21300000, guid: 59ca7758995e79446a985adba4531390, type: 3}
   AnimationController: {fileID: 0}
   Offset: 0

@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ee6ef6defc4899438af11b4d5961124, type: 3}
-  m_Name: Royal_Neckpieces
+  m_Script: {fileID: 11500000, guid: 87fb7710515303a4aa075a26dc9e2103, type: 3}
+  m_Name: Banana Peel
   m_EditorClassIdentifier: 
-  ItemName: Royal_Neckpieces
-  Stats:
+  Name: Banana Peel
+  Sprite: {fileID: 0}
+  AffectedStats:
     Dark: 0
-    Aggressive: 2
-    Slapstick: 0
-    Satire: 0
+    Aggressive: -2
+    Slapstick: 3
+    Satire: 1
     Ironic: 1
-  Sprite: {fileID: 21300000, guid: e3f93a3a32099e24db6a11d551f65169, type: 3}
-  AnimationController: {fileID: 0}
-  Offset: 0.02
+  IsConsumable: 0

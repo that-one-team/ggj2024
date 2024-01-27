@@ -15,10 +15,10 @@ MonoBehaviour:
   ItemName: Pinoy Pride_Bodies
   Stats:
     Dark: 0
-    Aggressive: 0
+    Aggressive: 1.5
     Slapstick: 0
-    Satire: 0
-    Ironic: 0
+    Satire: 0.5
+    Ironic: 2
   Sprite: {fileID: 21300000, guid: b1d0868005010be4385c408959434612, type: 3}
   AnimationController: {fileID: 0}
   Offset: 0

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Date Night_Neckpieces
   Stats:
-    Dark: 0
+    Dark: 1.5
     Aggressive: 0
     Slapstick: 0
-    Satire: 0
+    Satire: 3
     Ironic: 0
   Sprite: {fileID: 21300000, guid: c3b61f3e27c394747b5f33b59d2bbeee, type: 3}
   AnimationController: {fileID: 0}
