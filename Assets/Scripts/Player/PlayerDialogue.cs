@@ -26,7 +26,7 @@ public class PlayerDialogue : MonoBehaviour
 
     public void StartConversation(GameObject target)
     {
-        Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera(PlayerInteraction.Instance.transform, transform);
+        Camera.main.GetComponent<PlayerCamera>().AddToFocus(target.transform);
         _target = target.GetComponent<NPCBehavior>();
         _target.GetComponent<NPCMovement>().ProcessState((int)NPCState.INTERACTING);
 
@@ -105,11 +105,12 @@ public class PlayerDialogue : MonoBehaviour
 
     public IEnumerator EndConversation()
     {
-        Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera();
+        Camera.main.GetComponent<PlayerCamera>().RemoveFromFocus(_target.transform);
         ClearText();
         _dialoguePanel.SetActive(false);
         _choicesPanel.SetActive(false);
         yield return new WaitForSeconds(1.1f);
+        _target = null;
         PlayerInteraction.Instance.Interact(false, null);
     }
 }

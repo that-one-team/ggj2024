@@ -1,47 +1,41 @@
 using System.Linq;
+using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private float _lerpSpeed = 10;
-    [SerializeField] private Transform _target;
-    private Vector3 _targetPosition;
-    private Vector3 _offset;
-    private Vector3 _lastPos;
+    [SerializeField] private CinemachineTargetGroup _targetGroup;
+    private CinemachineVirtualCamera _vcam;
+    private float _startFOV;
 
-    bool _isFocusCam;
+    [SerializeField] private float _talkFOV;
 
     private void Start()
     {
-        _offset = transform.localPosition;
-        if (_target == null) _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _vcam = GetComponentInChildren<CinemachineVirtualCamera>();
+        _startFOV = _vcam.m_Lens.FieldOfView;
     }
 
-    private void LateUpdate()
+    public void AddToFocus(Transform target)
     {
-        if (!_isFocusCam)
-            _targetPosition = _target.position + _offset;
+        _targetGroup.AddMember(target, 1, 1);
 
-        transform.position = Vector3.Lerp(transform.position, _targetPosition, _lerpSpeed * Time.deltaTime);
+        float fov = _vcam.m_Lens.FieldOfView;
+        DOTween.To(() => fov, x => fov = x, _talkFOV, 0.5f).OnUpdate(() =>
+        {
+            _vcam.m_Lens.FieldOfView = fov;
+        });
     }
 
-    public void ToggleFocusCamera(params Transform[] targets)
+    public void RemoveFromFocus(Transform target)
     {
-        // _isFocusCam = !_isFocusCam;
-        // _lastPos = transform.position;
+        _targetGroup.RemoveMember(target);
 
-        // if (targets.Length == 1)
-        // {
-        //     _targetPosition = targets[0].position + _offset;
-        //     return;
-        // }
-
-        // var bounds = new Bounds(targets[0].position, Vector3.zero);
-        // foreach (var target in targets)
-        // {
-        //     bounds.Encapsulate(target.position);
-        // }
-
-        // _targetPosition = bounds.center + _offset;
+        float fov = _vcam.m_Lens.FieldOfView;
+        DOTween.To(() => fov, x => fov = x, _startFOV, 0.5f).OnUpdate(() =>
+        {
+            _vcam.m_Lens.FieldOfView = fov;
+        });
     }
 }
