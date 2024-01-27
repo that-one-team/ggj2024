@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1929790564946521864}
   - component: {fileID: 3291292445106640037}
   m_Layer: 0
-  m_Name: This is Fine  Sarcasm
+  m_Name: This is Fine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
