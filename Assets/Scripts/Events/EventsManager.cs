@@ -22,6 +22,7 @@ public class EventsManager : MonoBehaviour
     [SerializeField] GameObject _notificationPrefab;
 
     public bool IsEventActive { get; private set; }
+    public EventData CurrentEvent { get; private set; }
 
     AudioSource _audio;
     Sprite[] _controversialIssues;
@@ -54,18 +55,18 @@ public class EventsManager : MonoBehaviour
     {
         if (Time.time >= _nextGenerateTime && !IsEventActive)
         {
-            var evt = _events.SelectRandom();
+            CurrentEvent = _events.SelectRandom();
             int roll = Random.Range(0, 100);
 
             _nextGenerateTime = Time.time + _eventCooldownDuration;
 
-            if (roll <= evt.CurrentEventChance)
+            if (roll <= CurrentEvent.CurrentEventChance)
             {
-                RunEvent(evt);
+                RunEvent(CurrentEvent);
             }
             else
             {
-                evt.CurrentEventChance += evt.EventChanceAdditional;
+                CurrentEvent.CurrentEventChance += CurrentEvent.EventChanceAdditional;
             }
         }
     }
@@ -73,7 +74,6 @@ public class EventsManager : MonoBehaviour
     void RunEvent(EventData eventData)
     {
         IsEventActive = true;
-        PlayerReputation.Instance.Reputation += eventData.ReputationEffect;
 
         var issues = eventData.Name.ToLower().Equals("fake news") ? _tweetIssues : _controversialIssues;
 
@@ -86,7 +86,7 @@ public class EventsManager : MonoBehaviour
     IEnumerator PlayNotifications()
     {
         _audio.Stop();
-        _phone.DOLocalMoveX(250f, 0.5f);
+        _phone.DOLocalMoveX(600f, 0.5f);
         string lastNotif = "";
 
         for (int i = 0; i < Random.Range(0, 3); i++)
@@ -110,6 +110,7 @@ public class EventsManager : MonoBehaviour
         var response = _responses.SelectRandom();
         var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
         notifUI.ShowNotif(response, true);
+        PlayerReputation.Instance.AddRep(CurrentEvent.ReputationEffect);
 
         StartCoroutine(CompleteEvent());
     }
@@ -117,7 +118,8 @@ public class EventsManager : MonoBehaviour
     public IEnumerator CompleteEvent()
     {
         yield return new WaitForSeconds(2);
-        _phone.DOLocalMoveX(600, 0.5f);
+        _phone.DOLocalMoveX(1200, 0.5f);
         IsEventActive = false;
+        CurrentEvent = null;
     }
 }

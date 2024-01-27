@@ -84,7 +84,7 @@ public class EventManager : MonoBehaviour
 
     public void RunEvent(EventTest evt)
     {
-        playerReputation.Reputation += evt.ReputationEffect;
+        // playerReputation.AddRep(evt.ReputationEffect);
 
         var sprite = issueSprites.SelectRandom();
         screen.sprite = sprite;

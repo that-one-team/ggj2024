@@ -12,7 +12,7 @@ public class PlayerReputation : MonoBehaviour
         Instance = this;
     }
 
-    public float Reputation = 5;
+    public float Reputation { get; private set; } = 5;
 
     public void AddRep(float value)
     {
