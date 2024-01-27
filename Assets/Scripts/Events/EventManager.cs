@@ -30,7 +30,12 @@ public class EventManager : MonoBehaviour
     public float cooldownDuration;
     private float nextGenerateTime;
     private System.Random random = new System.Random();
-    private bool eventActive;
+    public bool fakeNews;
+    public bool controversial;
+    public bool pastIssues;
+
+
+
 
     // For Phone UI
     public Image imageToScale;
@@ -46,6 +51,9 @@ public class EventManager : MonoBehaviour
     public GameObject notif1;
     public GameObject notif2;
     public GameObject notif3;
+    public GameObject fake;
+    public GameObject contro;
+    public GameObject past;
 
     // For Sound Effects
     public AudioSource audioSource;
@@ -81,6 +89,8 @@ public class EventManager : MonoBehaviour
             Debug.Log(generatedNumber);
             nextGenerateTime = Time.time + cooldownDuration;
 
+            
+
             if (generatedNumber <= randomEvent.CurrentEventChance)
             {
                 RunEvent(randomEvent);
@@ -89,12 +99,27 @@ public class EventManager : MonoBehaviour
                 {
                     _events[i].CurrentEventChance = _events[i].EventChance;
                 }
-                
+
+                if (randomEvent == _events[0])
+                {
+                    fake.SetActive(true);
+                }
+                else if (randomEvent == _events[1])
+                {
+                    past.SetActive(true);
+                }
+                else if (randomEvent == _events[2])
+                {
+                    contro.SetActive(true);
+                }
+
             }
             else
             {
                 randomEvent.CurrentEventChance += randomEvent.EventChanceAdditional;
             }
+
+           
         }
     }
 
@@ -115,6 +140,14 @@ public class EventManager : MonoBehaviour
         notif1.SetActive(false);
         notif2.SetActive(false);
         notif3.SetActive(false);
+        pastIssues = false;
+        past.SetActive(false);
+        fakeNews = false;
+        fake.SetActive(false);
+        controversial = false;
+        contro.SetActive(false);
+
+        
 
     } 
 
@@ -152,10 +185,12 @@ public class EventManager : MonoBehaviour
             notif2 = notification4;
         }
 
+       
+
         yield return new WaitForSeconds(0.5f);
         audioSource.Play();
         notif1.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.25f); 
         audioSource.Play();
         notif2.SetActive(true);
         yield return new WaitForSeconds(0.25f);
@@ -163,6 +198,30 @@ public class EventManager : MonoBehaviour
         notif3.SetActive(true);
 
 
+    }
+
+    public void FakeNews()
+    {
+        if (fakeNews)
+        {
+            fake.SetActive(true);
+        }
+    }
+
+    public void Controversial()
+    {
+        if (controversial)
+        {
+            contro.SetActive(true);
+        }
+    }
+
+    public void PastIssues()
+    {
+        if (pastIssues)
+        {
+            past.SetActive(true);
+        }
     }
 
 }
