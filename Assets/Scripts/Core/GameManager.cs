@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-
+        SceneManager.LoadScene("SCN_TitleScreen");
     }
 
     public void Restart()
