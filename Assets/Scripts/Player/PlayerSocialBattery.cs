@@ -9,6 +9,7 @@ public class PlayerSocialBattery : MonoBehaviour
 
     void Update()
     {
+        SocialBattery -= Time.deltaTime * 0.5f;
         if (SocialBattery <= 0) GameManager.Instance.GameOver(OverReasons.NO_BAT);
     }
 }

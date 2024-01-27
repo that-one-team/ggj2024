@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Photograph of an Ironic Moment
   m_EditorClassIdentifier: 
   Name: Photograph of an Ironic Moment
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 7971c80282baacb47b870a5df877a62f, type: 3}
   AffectedStats:
     Dark: -4
     Aggressive: 0

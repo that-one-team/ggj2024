@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mask of Exaggeration
   m_EditorClassIdentifier: 
   Name: Mask of Exaggeration
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: b6c7b69684d031444ba038a75f56d35e, type: 3}
   AffectedStats:
     Dark: 0
     Aggressive: -1

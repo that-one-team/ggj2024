@@ -1,4 +1,5 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -47,7 +48,9 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (!IsInteractable) return;
 
         PlayerInventory.Instance.UseItem(Data, Target);
-
+        var animator = PlayerAnimation.Instance.Animator;
+        animator.SetTrigger("Giving");
         OnInteract();
     }
+
 }

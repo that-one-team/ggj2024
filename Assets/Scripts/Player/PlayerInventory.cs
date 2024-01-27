@@ -67,6 +67,11 @@ public class PlayerInventory : MonoBehaviour
         targetNPC.HasInteractedAlready = !isNegativelyAffected;
         GetComponent<PlayerSocialBattery>().SocialBattery += isNegativelyAffected ? -Random.Range(5, 10) : Random.Range(10, 20);
 
+        if (!isNegativelyAffected)
+        {
+            targetNPC.GetComponentInChildren<Animator>().SetBool("Happy", true);
+        }
+
         if (item.IsConsumable) RemoveItem(item);
     }
 }

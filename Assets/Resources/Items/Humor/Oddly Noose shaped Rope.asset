@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Oddly Noose shaped Rope
   m_EditorClassIdentifier: 
   Name: Oddly Noose shaped Rope
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 77c947646057bb94c924852d1ff271c2, type: 3}
   AffectedStats:
     Dark: 5
     Aggressive: -1

@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    public static PlayerAnimation Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     PlayerMovement _movement;
-    [SerializeField] Animator _animator;
+
+    [field: SerializeField]
+    public Animator Animator { get; private set; }
     SpriteRenderer _renderer;
     void Start()
     {
         _movement = GetComponent<PlayerMovement>();
-        _renderer = _animator.GetComponent<SpriteRenderer>();
+        _renderer = Animator.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        _animator.SetBool("isWalking", _movement.InputVelocity.magnitude > 0);
+        Animator.SetBool("isWalking", _movement.InputVelocity.magnitude > 0);
 
         if (_movement.InputVelocity.x != 0)
         {

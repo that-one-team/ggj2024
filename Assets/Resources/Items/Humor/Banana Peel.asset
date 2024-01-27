@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Banana Peel
   m_EditorClassIdentifier: 
   Name: Banana Peel
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 43c0adb213a409e4db33f93ccc154c8b, type: 3}
   AffectedStats:
     Dark: 0
     Aggressive: -2

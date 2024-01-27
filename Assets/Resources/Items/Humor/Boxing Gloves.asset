@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boxing Gloves
   m_EditorClassIdentifier: 
   Name: Boxing Gloves
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 25ce99d2f3031224c93bd7af0413070b, type: 3}
   AffectedStats:
     Dark: -1
     Aggressive: 6

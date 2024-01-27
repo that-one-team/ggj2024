@@ -56,7 +56,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (_dialogueText.text == _line)
         {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 Next();
             }
@@ -96,19 +96,20 @@ public class PlayerDialogue : MonoBehaviour
             spawned.Target = _target;
             spawned.OnInteract += () =>
             {
-                EndConversation();
+                StartCoroutine(EndConversation());
             };
 
             spawned.UpdateVisuals();
         }
     }
 
-    public void EndConversation()
+    public IEnumerator EndConversation()
     {
         Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera();
         ClearText();
         _dialoguePanel.SetActive(false);
         _choicesPanel.SetActive(false);
+        yield return new WaitForSeconds(1.1f);
         PlayerInteraction.Instance.Interact(false, null);
     }
 }
