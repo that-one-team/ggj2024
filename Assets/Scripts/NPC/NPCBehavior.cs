@@ -27,7 +27,7 @@ public class NPCBehavior : MonoBehaviour
 
     public void Spawn(Transform parent)
     {
-        name = Data.Name;
+        transform.name = Data.Name;
         // transform.localScale = new Vector3(0.17f, 0.17f, 1);
         // transform.parent = parent;
         GetComponent<CapsuleCollider>().radius = 1;
