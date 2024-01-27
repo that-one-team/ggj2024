@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class AnimationEvent : MonoBehaviour
 {
-    public TitleButtons TitleButtons;
+    // public TitleButtons TitleButtons;
+    public LoadingScreen LoadingScreen;
 
     public void CallNextScene()
     {
-        TitleButtons.StartGame();
+        LoadingScreen.LoadScreen(1);
+
+        // TitleButtons.StartGame();
     }
 }

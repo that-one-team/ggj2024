@@ -15,16 +15,39 @@ MonoBehaviour:
   Lines:
   - humor: Dark
     lines:
-    - '*dark humor*'
+    - 'You don''t need a parachute to go skydiving. You need a parachute to go sky
+      diving twice. '
+    - 'What does an orphan call a family photo? A selfie '
+    - 'Dark humour is like a child with cancer; it never gets old '
+    - "What has 50 legs but can\u2019t walk? 25 disabled people. "
+    - 'I saw mom chopping onions today and I started crying. Onions was a good friend. '
   - humor: Aggressive
     lines:
-    - '*aggressive humor*'
+    - 'If I wanted to kill myself, I would climb your ego and jump to your IQ '
+    - 'Yo mama so stupid that she sold her car for gas money '
+    - "Were you born on a highway? Cause that\u2019s where most accidents happen. "
+    - 'I hear the trash gets picked up tomorrow, be ready. '
+    - 'You reminded me of a piso, two-faced and not worth much '
   - humor: Slapstick
     lines:
-    - '*slapstick humor*'
+    - "It\u2019s important to stay hydrated, but that doesn\u2019t mean sober. "
+    - 'Why does so much comfort food lead to so much discomfort? '
+    - "Hot one minute, then freezing the next. I\u2019m pretty sure Spring is a woman. "
+    - "Thought about cleaning the house lately, but then I thought, \u201CWhat\u2019s
+      the house done for me lately?\u201D "
+    - 'What do you call a fish with no eyes? Fsh. '
   - humor: Satire
     lines:
-    - '*satire humor*'
+    - 'Congratulations on just graduating, you now have college debts to pay today '
+    - "I an not lazy. I\u2019m in energy saving mode. "
+    - "Save the Planet? It\u2019s not trendy these days. "
+    - "Sometimes I\u2019d rather be free than safe, when its at everyone else\u2019s
+      expense. "
+    - "Follow the trend! They\u2019re jumping off the cliff! Let\u2019s do it! "
   - humor: Ironic
     lines:
-    - '*ironic humor*'
+    - 'Mom wanted to adopt a cat, turns out she''s allergic to cats '
+    - 'I failed a test so overall it''s been a great day. '
+    - 'I want to be a success by being lazy. '
+    - 'Why is it the ugly ones that get the pretty ones? '
+    - Imagine a marriage counselor filing for a divorce.

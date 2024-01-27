@@ -38,10 +38,11 @@ public class EventManager : MonoBehaviour
 
 
     // For Phone UI
-    public Image imageToScale;
+    public Transform imageToScale;
     public float speed = 2.0f;
     public Vector3 phoneTargetPos;
     public Vector3 phoneDefaultPos;
+    public Image screen;
 
     // For Phone Notification UI
     public GameObject notification1;
@@ -55,10 +56,12 @@ public class EventManager : MonoBehaviour
     public GameObject contro;
     public GameObject past;
 
+    public bool currentEvent;
+
     // For Sound Effects
     public AudioSource audioSource;
 
-    
+    Sprite[] issueSprites;
 
 
     // Start is called before the first frame update
@@ -66,6 +69,14 @@ public class EventManager : MonoBehaviour
     {
         playerReputation = GameObject.Find("Player").GetComponent<PlayerReputation>();
         audioSource = GetComponent<AudioSource>();
+
+        var loaded = Resources.LoadAll("Events/Articles", typeof(Sprite));
+        issueSprites = new Sprite[loaded.Length];
+
+        loaded.CopyTo(issueSprites, 0);
+        print(issueSprites[0].name);
+
+        currentEvent = false;
     }
 
     // Update is called once per frame
@@ -78,11 +89,14 @@ public class EventManager : MonoBehaviour
     public void RunEvent(EventTest evt)
     {
         playerReputation.Reputation += evt.ReputationEffect;
+
+        var sprite = issueSprites.SelectRandom();
+        screen.sprite = sprite;
     }
 
     public void EventProc()
     {
-        if (Time.time >= nextGenerateTime)
+        if (Time.time >= nextGenerateTime && !currentEvent)
         {
             var randomEvent = _events.SelectRandom(); 
             int generatedNumber = GenerateNumber();
@@ -102,16 +116,19 @@ public class EventManager : MonoBehaviour
 
                 if (randomEvent == _events[0])
                 {
-                    fake.SetActive(true);
+
                 }
                 else if (randomEvent == _events[1])
                 {
-                    past.SetActive(true);
+
                 }
                 else if (randomEvent == _events[2])
                 {
-                    contro.SetActive(true);
+
                 }
+
+                currentEvent = true;
+
 
             }
             else
@@ -132,20 +149,20 @@ public class EventManager : MonoBehaviour
     {
         PhoneOn();
         yield return new WaitForSeconds(6f);
-        PhoneOff();
+        //PhoneOff();
         yield return new WaitForSeconds(2f);
 
         
 
-        notif1.SetActive(false);
-        notif2.SetActive(false);
-        notif3.SetActive(false);
-        pastIssues = false;
-        past.SetActive(false);
-        fakeNews = false;
-        fake.SetActive(false);
-        controversial = false;
-        contro.SetActive(false);
+        //notif1.SetActive(false);
+        //notif2.SetActive(false);
+        //notif3.SetActive(false);
+        //pastIssues = false;
+        //past.SetActive(false);
+        //fakeNews = false;
+        //fake.SetActive(false);
+        //controversial = false;
+        //contro.SetActive(false);
 
         
 
@@ -153,14 +170,14 @@ public class EventManager : MonoBehaviour
 
     public void PhoneOn()
     {
-        imageToScale.transform.DOLocalMoveX(250f, 0.5f);
+        imageToScale.DOLocalMoveX(250f, 0.5f);
         StartCoroutine(FadeIn());
     }
 
-    public void PhoneOff()
-    {
-        imageToScale.transform.DOLocalMoveX(550f, 0.5f);
-    }
+    //public void PhoneOff()
+    //{
+    //    imageToScale.transform.DOLocalMoveX(550f, 0.5f);
+    //}
 
     public IEnumerator FadeIn()
     {
@@ -187,7 +204,7 @@ public class EventManager : MonoBehaviour
 
        
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         audioSource.Play();
         notif1.SetActive(true);
         yield return new WaitForSeconds(0.25f); 
