@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     public float MoveSpeed;
-    Vector3 _vel;
+    public Vector3 InputVelocity { get; private set; }
     CharacterController _cc;
 
 
@@ -18,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (PlayerInteraction.Instance.IsInteracting) return;
-        _vel = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * MoveSpeed;
-        _cc.SimpleMove(_vel);
+        InputVelocity = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * MoveSpeed;
+        _cc.SimpleMove(InputVelocity);
     }
 }

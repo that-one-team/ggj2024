@@ -43,6 +43,7 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!IsInteractable) return;
+        PlayerInventory.Instance.UseItem(Data);
         OnInteract();
     }
 }

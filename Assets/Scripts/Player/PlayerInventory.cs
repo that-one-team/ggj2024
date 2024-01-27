@@ -52,4 +52,13 @@ public class PlayerInventory : MonoBehaviour
             Instantiate(_inventoryItemPrefab, _inventoryPanel).GetComponent<UIInventoryItem>().Data = item;
         }
     }
+
+    public void UseItem(ItemData item)
+    {
+        if (!Items.Contains(item)) return;
+
+        // apply stats and stuff
+
+        if (item.IsConsumable) RemoveItem(item);
+    }
 }

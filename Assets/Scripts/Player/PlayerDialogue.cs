@@ -93,7 +93,6 @@ public class PlayerDialogue : MonoBehaviour
             spawned.IsInteractable = true;
             spawned.OnInteract += () =>
             {
-                print("USE ITEM");
                 EndConversation();
             };
 

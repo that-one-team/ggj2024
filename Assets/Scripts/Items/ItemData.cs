@@ -9,4 +9,6 @@ public class ItemData : ScriptableObject
     public string Name;
     public Sprite Sprite;
     public HumorStats AffectedStats;
+
+    public bool IsConsumable;
 }
