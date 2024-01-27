@@ -65,6 +65,7 @@ public class PlayerInventory : MonoBehaviour
         PlayerReputation.Instance.AddRep(reputationImpact);
 
         targetNPC.HasInteractedAlready = !isNegativelyAffected;
+        GetComponent<PlayerSocialBattery>().SocialBattery += isNegativelyAffected ? -Random.Range(5, 10) : Random.Range(10, 20);
 
         if (item.IsConsumable) RemoveItem(item);
     }

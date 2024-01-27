@@ -6,9 +6,4 @@ using UnityEngine;
 public class PlayerSocialBattery : MonoBehaviour
 {
     public float SocialBattery = 100;
-
-    void Update()
-    {
-
-    }
 }

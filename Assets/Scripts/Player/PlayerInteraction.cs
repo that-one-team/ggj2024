@@ -23,6 +23,8 @@ public class PlayerInteraction : MonoBehaviour
         if (target == null) return;
         OnInteract?.Invoke(target);
         target.GetComponent<Interactable>().Interact();
+
+        GetComponent<PlayerSocialBattery>().SocialBattery -= UnityEngine.Random.Range(5, 10);
     }
 
     void Update()
@@ -31,6 +33,12 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !IsInteracting)
             Interact(true, _target);
+
+
+        if (IsInteracting)
+        {
+            GetComponent<PlayerSocialBattery>().SocialBattery -= Time.deltaTime;
+        }
     }
 
     private void OnTriggerStay(Collider other)
