@@ -22,18 +22,9 @@ public class PlayerDialogue : MonoBehaviour
 
     private string _line;
 
-    private void OnEnable()
-    {
-        PlayerInteraction.OnInteract += StartConversation;
-    }
-
-    private void OnDisable()
-    {
-        PlayerInteraction.OnInteract -= StartConversation;
-    }
-
     public void StartConversation(GameObject target)
     {
+        Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera(PlayerInteraction.Instance.transform, transform);
         var _behaviour = target.GetComponent<NPCBehavior>();
         _behaviour.GetComponent<NPCMovement>().ProcessState((int)NPCState.INTERACTING);
 
@@ -89,6 +80,7 @@ public class PlayerDialogue : MonoBehaviour
 
     public void EndConversation()
     {
+        Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera();
         ClearText();
         _dialoguePanel.SetActive(false);
         // _choicesPanel.SetActive(false);

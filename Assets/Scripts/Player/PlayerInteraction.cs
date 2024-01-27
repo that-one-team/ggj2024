@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
             Interact(true, _target);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Interactable"))
         {

@@ -1,9 +1,18 @@
+using TMPro;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     public bool CanInteract;
     [SerializeField] GameObject _indicatorUI;
+
+    private void OnValidate()
+    {
+        if (_indicatorUI == null && transform.childCount > 0)
+        {
+            _indicatorUI = transform.GetChild(0).gameObject;
+        }
+    }
 
     private void Update()
     {
@@ -16,5 +25,8 @@ public class Interactable : MonoBehaviour
         _indicatorUI.SetActive(CanInteract);
     }
 
-    public virtual void Interact() { }
+    public virtual void Interact()
+    {
+        PlayerInteraction.Instance.Interact(false, null);
+    }
 }

@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2417016222288776773}
   - component: {fileID: 4118618355228763707}
   - component: {fileID: 2488688615288455933}
-  - component: {fileID: 1142904155299561266}
   - component: {fileID: -3464182845012969674}
+  - component: {fileID: 5537435778019633557}
   m_Layer: 0
   m_Name: NPC Base
   m_TagString: Interactable
@@ -157,20 +157,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1142904155299561266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268396975755981433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca03d5558d28b7e4b8ebad9980a58abb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanInteract: 0
-  _indicatorUI: {fileID: 7094120581515413119}
 --- !u!54 &-3464182845012969674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,6 +184,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5537435778019633557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268396975755981433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ccf89268416e84980cec704535df2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanInteract: 0
+  _indicatorUI: {fileID: 7094120581515413119}
 --- !u!1 &7094120581515413119
 GameObject:
   m_ObjectHideFlags: 0
