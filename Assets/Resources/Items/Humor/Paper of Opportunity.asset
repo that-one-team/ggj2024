@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87fb7710515303a4aa075a26dc9e2103, type: 3}
-  m_Name: Crayon of Creativity - When used with crayon, can satisfy any Humor
+  m_Name: Paper of Opportunity
   m_EditorClassIdentifier: 
-  Name: Crayon of Creativity - When used with crayon, can satisfy any Humor
+  Name: Paper of Opportunity - When used with paper, can satisfy any Humor
   Sprite: {fileID: 0}
   AffectedStats:
-    Dark: 3
-    Aggressive: 1
+    Dark: 2
+    Aggressive: 2
     Slapstick: 1
-    Satire: 2
-    Ironic: 5
-  IsConsumable: 0
+    Satire: 1
+    Ironic: 1
+  IsConsumable: 1

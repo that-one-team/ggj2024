@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Throwable Pie
   m_EditorClassIdentifier: 
   Name: Throwable Pie
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 9a9e2fb3c6509cc468cdb6fd06481bac, type: 3}
   AffectedStats:
     Dark: 0
     Aggressive: 3

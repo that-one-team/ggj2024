@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trash Talk
   m_EditorClassIdentifier: 
   Name: Trash Talk
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 3baecfe7b42e4dd45bdddb2ad8b07383, type: 3}
   AffectedStats:
     Dark: -1
     Aggressive: 4
