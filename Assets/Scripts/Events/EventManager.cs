@@ -70,10 +70,6 @@ public class EventManager : MonoBehaviour
         playerReputation = GameObject.Find("Player").GetComponent<PlayerReputation>();
         audioSource = GetComponent<AudioSource>();
 
-        var loaded = Resources.LoadAll("Events/Articles", typeof(Sprite));
-        issueSprites = new Sprite[loaded.Length];
-
-        loaded.CopyTo(issueSprites, 0);
         print(issueSprites[0].name);
 
         currentEvent = false;
@@ -98,12 +94,12 @@ public class EventManager : MonoBehaviour
     {
         if (Time.time >= nextGenerateTime && !currentEvent)
         {
-            var randomEvent = _events.SelectRandom(); 
+            var randomEvent = _events.SelectRandom();
             int generatedNumber = GenerateNumber();
             Debug.Log(generatedNumber);
             nextGenerateTime = Time.time + cooldownDuration;
 
-            
+
 
             if (generatedNumber <= randomEvent.CurrentEventChance)
             {
@@ -136,7 +132,7 @@ public class EventManager : MonoBehaviour
                 randomEvent.CurrentEventChance += randomEvent.EventChanceAdditional;
             }
 
-           
+
         }
     }
 
@@ -152,7 +148,7 @@ public class EventManager : MonoBehaviour
         //PhoneOff();
         yield return new WaitForSeconds(2f);
 
-        
+
 
         //notif1.SetActive(false);
         //notif2.SetActive(false);
@@ -164,9 +160,9 @@ public class EventManager : MonoBehaviour
         //controversial = false;
         //contro.SetActive(false);
 
-        
 
-    } 
+
+    }
 
     public void PhoneOn()
     {
@@ -202,12 +198,12 @@ public class EventManager : MonoBehaviour
             notif2 = notification4;
         }
 
-       
+
 
         yield return new WaitForSeconds(2f);
         audioSource.Play();
         notif1.SetActive(true);
-        yield return new WaitForSeconds(0.25f); 
+        yield return new WaitForSeconds(0.25f);
         audioSource.Play();
         notif2.SetActive(true);
         yield return new WaitForSeconds(0.25f);

@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-[CreateAssetMenu(fileName = "Event Data", menuName = "Event Data", order = 0)]
-public class EventData : ScriptableObject
+[System.Serializable]
+public class EventData
 {
-    public string EventName;
-    public HumorStats StatsEffect;
+    public string Name;
+    public HumorStats StatsAffected;
     public float ReputationEffect;
-
     public float EventChance;
+    public float CurrentEventChance;
+    public float EventChanceAdditional;
 }
