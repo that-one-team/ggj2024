@@ -15,10 +15,13 @@ public class PlayerAnimation : MonoBehaviour
     [field: SerializeField]
     public Animator Animator { get; private set; }
     SpriteRenderer _renderer;
+
+    Vector3 _scale;
     void Start()
     {
         _movement = GetComponent<PlayerMovement>();
         _renderer = Animator.GetComponent<SpriteRenderer>();
+        _scale = _renderer.transform.localScale;
     }
 
     void Update()
@@ -27,7 +30,9 @@ public class PlayerAnimation : MonoBehaviour
 
         if (_movement.InputVelocity.x != 0)
         {
-            _renderer.flipX = _movement.InputVelocity.x < 1;
+            var flipped = _scale * (_movement.InputVelocity.x < 1 ? -1 : 1);
+
+            _renderer.transform.localScale = new Vector3(flipped.x, _scale.y, _scale.z);
         }
     }
 }

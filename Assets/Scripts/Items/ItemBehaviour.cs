@@ -16,6 +16,8 @@ public class ItemBehaviour : Interactable
 
         if (Data.Sprite != null)
             renderer.sprite = Data.Sprite;
+
+        UpdateIndicator();
     }
 
     private void OnValidate()

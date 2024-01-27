@@ -4,25 +4,32 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool CanInteract;
-    [SerializeField] GameObject _indicatorUI;
+    [field: SerializeField]
+    public GameObject IndicatorUI { get; set; }
 
     private void OnValidate()
     {
-        if (_indicatorUI == null && transform.childCount > 0)
+        UpdateIndicator();
+    }
+
+    protected void UpdateIndicator()
+    {
+        if (IndicatorUI == null && transform.childCount > 0)
         {
-            _indicatorUI = transform.GetChild(0).gameObject;
+            IndicatorUI = transform.GetChild(0).gameObject;
         }
+
     }
 
     private void Update()
     {
         if (PlayerInteraction.Instance.IsInteracting)
         {
-            _indicatorUI.SetActive(false);
+            IndicatorUI.SetActive(false);
             return;
         }
 
-        _indicatorUI.SetActive(CanInteract);
+        IndicatorUI.SetActive(CanInteract);
     }
 
     public virtual void Interact()

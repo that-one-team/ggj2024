@@ -23,8 +23,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Items.Contains(item) || Items.Count >= MaxItemCount) return false;
 
-        // TODO add notification
-        print("Added item to inventory");
         Items.Add(item);
 
         UpdateUI();
@@ -49,12 +47,16 @@ public class PlayerInventory : MonoBehaviour
 
         foreach (var item in Items)
         {
-            Instantiate(_inventoryItemPrefab, _inventoryPanel).GetComponent<UIInventoryItem>().Data = item;
+            if (item.HideInHud) continue;
+            var i = Instantiate(_inventoryItemPrefab, _inventoryPanel).GetComponent<UIInventoryItem>();
+            i.Data = item;
+            i.UpdateVisuals();
         }
     }
 
     public void UseItem(ItemData item, NPCBehavior targetNPC = null)
     {
+        print("use item");
         if (!Items.Contains(item)) return;
 
         var isNegativelyAffected = HumorStats.GetMaxStat(item.AffectedStats).StatName != HumorStats.GetMaxStat(targetNPC.Data.Stats).StatName;

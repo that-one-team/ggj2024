@@ -6,9 +6,19 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsInteracting { get; private set; }
     public static PlayerInteraction Instance { get; private set; }
 
+    [field: SerializeField]
+    public SpriteRenderer HandObject { get; private set; }
+
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     public static event Action<GameObject> OnInteract;

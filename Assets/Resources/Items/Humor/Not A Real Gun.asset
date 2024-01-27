@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Not A Real Gun
   m_EditorClassIdentifier: 
   Name: Not A Real Gun
-  Sprite: {fileID: 21300000, guid: 75e1416b0f6eb4471b0f2df191fc7e3b, type: 3}
+  Sprite: {fileID: 21300000, guid: a056fdf8e8fadfc488e4b7baf78287aa, type: 3}
   AffectedStats:
     Dark: 5
     Aggressive: 2
@@ -21,3 +21,4 @@ MonoBehaviour:
     Satire: 2
     Ironic: 1
   IsConsumable: 0
+  HideInHud: 0

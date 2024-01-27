@@ -20,3 +20,5 @@ MonoBehaviour:
     Slapstick: 1
     Satire: 0
     Ironic: 0
+  IsConsumable: 0
+  HideInHud: 1

@@ -11,4 +11,5 @@ public class ItemData : ScriptableObject
     public HumorStats AffectedStats;
 
     public bool IsConsumable;
+    public bool HideInHud;
 }

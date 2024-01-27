@@ -29,7 +29,6 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         name = Data.Name;
         GetComponent<Image>().sprite = Data.Sprite;
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,10 +46,17 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (!IsInteractable) return;
 
-        PlayerInventory.Instance.UseItem(Data, Target);
+        StartCoroutine(Interact());
+    }
+    IEnumerator Interact()
+    {
+        if (!Data.HideInHud)
+            PlayerInteraction.Instance.HandObject.sprite = Data.Sprite;
         var animator = PlayerAnimation.Instance.Animator;
         animator.SetTrigger("Giving");
+        yield return new WaitForSeconds(1.1f);
+        PlayerInteraction.Instance.HandObject.sprite = null;
+        PlayerInventory.Instance.UseItem(Data, Target);
         OnInteract();
     }
-
 }
