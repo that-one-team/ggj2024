@@ -20,7 +20,6 @@ public class NPCInteraction : MonoBehaviour
     private void Start()
     {
         _behaviour = GetComponent<NPCBehavior>();
-        // _lines = Resources.Load<NPCDialogueData>("DialogueLines").GetMaxStatLines(_behaviour.Data.Stats);
         IndicatorOff();
     }
 

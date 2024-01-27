@@ -28,6 +28,7 @@ public class PlayerInteraction : MonoBehaviour
     public void Interact(bool state, GameObject target)
     {
         IsInteracting = state;
+        GetComponent<PlayerMovement>().InputVelocity = Vector3.zero;
         _target = null;
 
         if (target == null) return;

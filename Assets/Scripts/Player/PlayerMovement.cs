@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float MoveSpeed;
-    public Vector3 InputVelocity { get; private set; }
+    public Vector3 InputVelocity { get; set; }
     CharacterController _cc;
 
     bool _isFrozen;
