@@ -5,11 +5,21 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     PlayerMovement _movement;
-    Animator _animator;
+    [SerializeField] Animator _animator;
+    SpriteRenderer _renderer;
     void Start()
     {
         _movement = GetComponent<PlayerMovement>();
-        _animator = GetComponent<Animator>();
+        _renderer = _animator.GetComponent<SpriteRenderer>();
     }
 
+    void Update()
+    {
+        _animator.SetBool("isWalking", _movement.InputVelocity.magnitude > 0);
+
+        if (_movement.InputVelocity.x != 0)
+        {
+            _renderer.flipX = _movement.InputVelocity.x < 1;
+        }
+    }
 }

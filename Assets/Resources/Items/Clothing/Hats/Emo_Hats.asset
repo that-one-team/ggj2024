@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Emo_Hats
   Stats:
-    Dark: 0
-    Aggressive: 0
+    Dark: 4
+    Aggressive: 1
     Slapstick: 0
     Satire: 0
     Ironic: 0

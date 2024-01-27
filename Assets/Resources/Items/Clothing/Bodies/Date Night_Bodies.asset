@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Date Night_Bodies
   Stats:
-    Dark: 0
-    Aggressive: 0
+    Dark: 1
+    Aggressive: 0.5
     Slapstick: 0
-    Satire: 0
+    Satire: 3
     Ironic: 0
   Sprite: {fileID: 21300000, guid: b168a83023e183941bbc97fcf068a19f, type: 3}
   AnimationController: {fileID: 0}

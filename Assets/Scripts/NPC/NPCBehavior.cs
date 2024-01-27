@@ -35,6 +35,8 @@ public class NPCBehavior : MonoBehaviour
         transform.name = Data.Name;
         GetComponent<CapsuleCollider>().radius = 1;
         GenerateOutfit();
+
+        Data.Stats = GetHumorSum();
     }
 
     public HumorStats GetHumorSum()
@@ -92,14 +94,13 @@ public class NPCBehavior : MonoBehaviour
         spawnedItem.transform.position = transform.position + (Vector3.forward * -item.Offset);
         spawnedItem.transform.parent = transform;
         spawnedItem.GetComponent<ClothingItemBehaviour>().Data = item;
-        // spawnedItem.transform.localScale = Vector3.one;
 
         spawnedItem.GetComponent<ClothingItemBehaviour>().UpdateVisuals();
     }
 
     void Update()
     {
-        _statsDebug.text = $"{Data.Stats.ToString()}";
+        _statsDebug.text = $"{Data.Stats}";
     }
 
 }

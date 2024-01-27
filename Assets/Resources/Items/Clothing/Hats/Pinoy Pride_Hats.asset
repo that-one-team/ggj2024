@@ -18,7 +18,7 @@ MonoBehaviour:
     Aggressive: 0
     Slapstick: 0
     Satire: 0
-    Ironic: 0
+    Ironic: 2
   Sprite: {fileID: 21300000, guid: 4c72be25bfbabe8488bd73d521fdff2c, type: 3}
   AnimationController: {fileID: 0}
   Offset: 0

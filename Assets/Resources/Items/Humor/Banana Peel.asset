@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fb7710515303a4aa075a26dc9e2103, type: 3}
+  m_Name: Banana Peel
+  m_EditorClassIdentifier: 
+  Name: Banana Peel
+  Sprite: {fileID: 0}
+  AffectedStats:
+    Dark: 0
+    Aggressive: -2
+    Slapstick: 3
+    Satire: 1
+    Ironic: 1
+  IsConsumable: 0
