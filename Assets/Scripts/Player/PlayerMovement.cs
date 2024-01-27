@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 _vel;
     CharacterController _cc;
 
+
     void Start()
     {
         _cc = GetComponent<CharacterController>();
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (PlayerInteraction.Instance.IsInteracting) return;
         _vel = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * MoveSpeed;
         _cc.SimpleMove(_vel);
     }

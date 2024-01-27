@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17d0a7b550cb5a4e8ced9579f13c10f, type: 3}
+  m_Name: Dialogue Lines
+  m_EditorClassIdentifier: 
+  Lines:
+  - humor: Dark
+    lines:
+    - '*dark humor*'
+  - humor: Aggressive
+    lines:
+    - '*aggressive humor*'
+  - humor: Slapstick
+    lines:
+    - '*slapstick humor*'
+  - humor: Satire
+    lines:
+    - '*satire humor*'
+  - humor: Ironic
+    lines:
+    - '*ironic humor*'

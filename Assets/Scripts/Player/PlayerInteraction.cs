@@ -11,12 +11,43 @@ public class PlayerInteraction : MonoBehaviour
         Instance = this;
     }
 
-    public Action<bool> OnInteract;
+    public static event Action<GameObject> OnInteract;
 
-    public void Interact(bool state)
+    private GameObject _target;
+
+    public void Interact(bool state, GameObject target)
     {
         IsInteracting = state;
-        OnInteract(state);
+        _target = null;
+
+        if (target == null) return;
+        OnInteract?.Invoke(target);
+        target.GetComponent<Interactable>().Interact();
     }
 
+    void Update()
+    {
+        if (_target == null) return;
+
+        if (Input.GetKeyDown(KeyCode.E) && !IsInteracting)
+            Interact(true, _target);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Interactable"))
+        {
+            other.GetComponent<Interactable>().CanInteract = true;
+            _target = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Interactable"))
+        {
+            other.GetComponent<Interactable>().CanInteract = false;
+            _target = null;
+        }
+    }
 }

@@ -17,23 +17,18 @@ public class NPCInteraction : MonoBehaviour
 
     private NPCBehavior _behaviour;
 
-    private void Awake()
-    {
-        _lines = Resources.Load<NPCDialogueData>("DialogueLines").GetMaxStatLines(_behaviour.Data.Stats);
-    }
-
     private void Start()
     {
         _behaviour = GetComponent<NPCBehavior>();
-        _indicatorUI = transform.GetChild(0).gameObject;
-
+        // _lines = Resources.Load<NPCDialogueData>("DialogueLines").GetMaxStatLines(_behaviour.Data.Stats);
+        IndicatorOff();
     }
 
     void Update()
     {
-        if (_lines.Length == 0) return;
+        if (_lines == null || _lines.Length == 0) return;
 
-        if (Input.GetKeyDown(KeyCode.E) && _isPlayerClose && PlayerInteraction.Instance.IsInteracting)
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerClose && !PlayerInteraction.Instance.IsInteracting)
         {
             if (_dialoguePanel.activeInHierarchy)
             {
@@ -45,7 +40,7 @@ public class NPCInteraction : MonoBehaviour
                 StartCoroutine(Typing());
             }
 
-            PlayerInteraction.Instance.Interact(true);
+            PlayerInteraction.Instance.Interact(true, gameObject);
         }
 
         if (_dialogueText.text == _lines[_lineIndex])
@@ -61,10 +56,10 @@ public class NPCInteraction : MonoBehaviour
 
     public void ClearText()
     {
-        _dialogueText.text = "";
+        // _dialogueText.text = "";
         _lineIndex = 0;
-        _dialoguePanel.SetActive(false);
-        PlayerInteraction.Instance.Interact(false);
+        // _dialoguePanel.SetActive(false);
+        // PlayerInteraction.Instance.Interact(false);
     }
 
     IEnumerator Typing()
@@ -92,7 +87,7 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -102,7 +97,7 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
