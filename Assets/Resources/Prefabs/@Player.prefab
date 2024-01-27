@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c061f1398daff64ba75cf3187ce34fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 4940187511317280005}
+  <Animator>k__BackingField: {fileID: 4940187511317280005}
 --- !u!135 &4375429363282128700
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -779,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3473295194140781257
 RectTransform:
   m_ObjectHideFlags: 0
