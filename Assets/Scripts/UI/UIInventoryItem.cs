@@ -15,12 +15,18 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private GameObject _tooltip;
     [SerializeField] private TextMeshProUGUI _tooltipText;
 
-    private void OnValidate()
+    void OnValidate()
+    {
+        UpdateVisuals();
+    }
+
+    public void UpdateVisuals()
     {
         if (Data == null) return;
 
         name = Data.Name;
         GetComponent<Image>().sprite = Data.Sprite;
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

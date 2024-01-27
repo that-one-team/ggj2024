@@ -96,6 +96,8 @@ public class PlayerDialogue : MonoBehaviour
                 print("USE ITEM");
                 EndConversation();
             };
+
+            spawned.UpdateVisuals();
         }
     }
 
