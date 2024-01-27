@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4131467598138726742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -420,6 +420,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6742a9077dda042a9fd585d7b5aa5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Items>k__BackingField:
+  - {fileID: 11400000, guid: 733d78648dab0004ea95c5740bf6eb36, type: 2}
+  - {fileID: 11400000, guid: 607c1a42b1d074e419d52a8d2f4983aa, type: 2}
+  - {fileID: 11400000, guid: 09ad9422e3d2fba4f8358da22f0e6488, type: 2}
+  - {fileID: 11400000, guid: d3e177e1531535b49b01a02f6b3be0a3, type: 2}
+  - {fileID: 11400000, guid: 13d860ca236b26f4dba8543f343cc6ed, type: 2}
   MaxItemCount: 8
   _inventoryPanel: {fileID: 2734486315899237205}
   _inventoryItemPrefab: {fileID: 8818986823918931345, guid: f31114f9a9c024844b899cb66c420a59, type: 3}
@@ -557,7 +563,7 @@ GameObject:
   - component: {fileID: 6965224355325032462}
   m_Layer: 0
   m_Name: '@Player'
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

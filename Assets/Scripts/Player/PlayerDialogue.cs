@@ -69,7 +69,7 @@ public class PlayerDialogue : MonoBehaviour
             ShowChoices();
         }
     }
-    // TODO hook up @Tatanagi inventory system to show items available :)
+
     // prepare for animation/cutscene use
     public void ShowChoices()
     {
@@ -77,8 +77,6 @@ public class PlayerDialogue : MonoBehaviour
         _choicesPanel.SetActive(true);
 
         LoadChoices();
-
-        EndConversation();
     }
 
     void LoadChoices()
@@ -93,6 +91,11 @@ public class PlayerDialogue : MonoBehaviour
             var spawned = Instantiate(_choicePrefab, _choicesPanel.transform).GetComponent<UIInventoryItem>();
             spawned.Data = item;
             spawned.IsInteractable = true;
+            spawned.OnInteract += () =>
+            {
+                print("USE ITEM");
+                EndConversation();
+            };
         }
     }
 
@@ -101,7 +104,7 @@ public class PlayerDialogue : MonoBehaviour
         Camera.main.GetComponent<PlayerCamera>().ToggleFocusCamera();
         ClearText();
         _dialoguePanel.SetActive(false);
-        // _choicesPanel.SetActive(false);
+        _choicesPanel.SetActive(false);
         PlayerInteraction.Instance.Interact(false, null);
     }
 }

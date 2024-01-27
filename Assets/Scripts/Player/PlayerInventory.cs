@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
         Instance = this;
     }
 
+    [field: SerializeField]
     public List<ItemData> Items { get; private set; } = new();
 
     [Header("Settings")]

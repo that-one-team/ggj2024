@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87fb7710515303a4aa075a26dc9e2103, type: 3}
-  m_Name: Speak (Satire)
+  m_Name: Speak (Ironic humor)
   m_EditorClassIdentifier: 
-  Name: Speak (Satire)
-  Sprite: {fileID: 21300000, guid: 75e1416b0f6eb4471b0f2df191fc7e3b, type: 3}
+  Name: Speak (Ironic humor)
+  Sprite: {fileID: 21300000, guid: 5c790786f89c2c04ebc675f3bb1c7803, type: 3}
   AffectedStats:
     Dark: 0
     Aggressive: 0
     Slapstick: 0
     Satire: 0
-    Ironic: 0
+    Ironic: 1

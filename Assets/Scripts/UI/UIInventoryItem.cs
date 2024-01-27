@@ -9,6 +9,8 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public ItemData Data { get; set; }
 
     public bool IsInteractable = false;
+    public delegate void InteractAction();
+    public InteractAction OnInteract;
 
     [SerializeField] private GameObject _tooltip;
     [SerializeField] private TextMeshProUGUI _tooltipText;
@@ -35,5 +37,6 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!IsInteractable) return;
+        OnInteract();
     }
 }
