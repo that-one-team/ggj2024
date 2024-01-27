@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 8627953787861856368}
   - component: {fileID: 64331876149776435}
   - component: {fileID: 3690828434604194959}
+  - component: {fileID: 5501248189120510824}
   m_Layer: 0
   m_Name: Bunny for riggin
   m_TagString: Untagged
@@ -307,6 +308,27 @@ MonoBehaviour:
     m_Extent: {x: 5.076725, y: 6.676792, z: 0}
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!95 &5501248189120510824
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405332916693705747}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63bd7f0c65306e4418e400ae221d94b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5747933030225605004
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,10 +449,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9004438616319079642}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.029913954, w: 0.9995525}
-  m_LocalPosition: {x: 2.4223359, y: -0.15659463, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.07199168, w: 0.9974053}
+  m_LocalPosition: {x: 2.639085, y: -0.23377033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4446839762619719429}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.257}
