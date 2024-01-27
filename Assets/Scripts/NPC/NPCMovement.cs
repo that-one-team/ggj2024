@@ -10,11 +10,9 @@ public class NPCMovement : MonoBehaviour
     private NavMeshAgent _agent;
     private Coroutine _currRoutine;
 
-
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-
         _agent.baseOffset = 5.85f;
 
         RandomState();
@@ -45,6 +43,7 @@ public class NPCMovement : MonoBehaviour
     IEnumerator MovingState()
     {
         _agent.isStopped = false;
+        _agent.speed = GetComponent<NPCMood>().CurrentMood * 10 / 100;
         _agent.SetDestination(GetRandomDestination());
         yield return new WaitUntil(() => _agent.remainingDistance <= 0.01f);
         _agent.isStopped = true;
