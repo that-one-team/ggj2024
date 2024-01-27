@@ -32,6 +32,8 @@ public class PlayerDialogue : MonoBehaviour
 
         _line = _dialogueData.GetMaxStatLines(_target.Data.Stats).SelectRandom();
 
+        UINPCStats.Instance.StatsGroup.SetActive(true);
+        UINPCStats.Instance.SetTarget(_target.Data.Stats);
         _dialoguePanel.SetActive(true);
         ClearText();
 
@@ -109,6 +111,7 @@ public class PlayerDialogue : MonoBehaviour
         ClearText();
         _dialoguePanel.SetActive(false);
         _choicesPanel.SetActive(false);
+        UINPCStats.Instance.StatsGroup.SetActive(false);
         yield return new WaitForSeconds(1.1f);
         _target = null;
         PlayerInteraction.Instance.Interact(false, null);

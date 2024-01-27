@@ -34,7 +34,8 @@ public class PlayerInteraction : MonoBehaviour
         OnInteract?.Invoke(target);
         target.GetComponent<Interactable>().Interact();
 
-        GetComponent<PlayerSocialBattery>().SocialBattery -= UnityEngine.Random.Range(5, 10);
+        if (target.GetComponent<NPCBehavior>() && !target.GetComponent<NPCBehavior>().HasInteractedAlready)
+            GetComponent<PlayerSocialBattery>().SocialBattery -= UnityEngine.Random.Range(5, 10);
     }
 
     void Update()

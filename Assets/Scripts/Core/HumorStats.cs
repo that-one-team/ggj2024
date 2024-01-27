@@ -1,4 +1,7 @@
 // author: @zsfer
+using System.Collections.Generic;
+using System.Configuration.Assemblies;
+
 [System.Serializable]
 public class HumorStats
 {
@@ -17,6 +20,20 @@ public class HumorStats
         Ironic += stats.Ironic;
 
         return GetMaxStat(stats).StatName == GetMaxStat(this).StatName;
+    }
+
+    public float[] GetStatsInOrder()
+    {
+        List<float> finalVal = new()
+        {
+            Dark,
+            Aggressive,
+            Slapstick,
+            Satire,
+            Ironic,
+        };
+
+        return finalVal.ToArray();
     }
 
     public static (string StatName, float MaxValue) GetMaxStat(HumorStats stats)

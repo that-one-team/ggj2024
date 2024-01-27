@@ -29,6 +29,7 @@ public class NPCBehavior : MonoBehaviour
     public bool HasInteractedAlready { get; set; }
 
     [Header("Debug")]
+    [SerializeField] bool _showDebug;
     [SerializeField] TextMeshProUGUI _statsDebug;
 
     public void Spawn(Transform parent)
@@ -101,7 +102,9 @@ public class NPCBehavior : MonoBehaviour
 
     void Update()
     {
-        _statsDebug.text = $"{Data.Stats} - [MOOD] {GetComponent<NPCMood>().CurrentMood}";
+#if UNITY_EDITOR
+        _statsDebug.text = _showDebug ? $"{Data.Stats} - [MOOD] {GetComponent<NPCMood>().CurrentMood}" : "";
+#endif
     }
 
 
