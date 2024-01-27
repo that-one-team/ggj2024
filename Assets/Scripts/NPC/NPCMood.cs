@@ -18,6 +18,21 @@ public class NPCMood : MonoBehaviour
     [SerializeField] private Image _emoteIcon;
     [SerializeField] private Mood[] _moods;
     [SerializeField] private Sprite _confusedEmote;
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= GameOver;
+    }
+
+    void GameOver(OverReasons reason)
+    {
+        ShowMood(2, 10000);
+    }
+
 
     private void Start()
     {
@@ -61,11 +76,16 @@ public class NPCMood : MonoBehaviour
         }
     }
 
-    IEnumerator ShowEmote(Sprite emote)
+    public void ShowMood(int index, float duration = 5)
+    {
+        StartCoroutine(ShowEmote(_moods[index].Emote, duration));
+    }
+
+    IEnumerator ShowEmote(Sprite emote, float duration = 5)
     {
         _emoteIcon.sprite = emote;
         _moodBubble.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(duration);
         _moodBubble.SetActive(false);
     }
 }

@@ -7,6 +7,23 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 InputVelocity { get; private set; }
     CharacterController _cc;
 
+    bool _isFrozen;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= GameOver;
+    }
+
+    void GameOver(OverReasons reason)
+    {
+        _isFrozen = true;
+    }
+
 
     void Start()
     {
@@ -15,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (PlayerInteraction.Instance.IsInteracting) return;
+        if (PlayerInteraction.Instance.IsInteracting || _isFrozen) return;
         InputVelocity = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized * MoveSpeed;
         _cc.SimpleMove(InputVelocity);
     }

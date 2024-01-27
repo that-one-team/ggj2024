@@ -58,11 +58,13 @@ public class PlayerInventory : MonoBehaviour
         if (!Items.Contains(item)) return;
 
         var isNegativelyAffected = HumorStats.GetMaxStat(item.AffectedStats).StatName != HumorStats.GetMaxStat(targetNPC.Data.Stats).StatName;
-        var moodImpact = isNegativelyAffected ? Random.Range(-40, -10) : Random.Range(30, 50);
+        var moodImpact = isNegativelyAffected ? Random.Range(-40, -10) : Random.Range(5, 20);
         targetNPC.GetComponent<NPCMood>().AddMood(moodImpact);
 
         var reputationImpact = isNegativelyAffected ? -Random.Range(5, 10) : Random.Range(5, 10);
         PlayerReputation.Instance.AddRep(reputationImpact);
+
+        targetNPC.HasInteractedAlready = !isNegativelyAffected;
 
         if (item.IsConsumable) RemoveItem(item);
     }

@@ -53,7 +53,7 @@ public class NPCMovement : MonoBehaviour
     IEnumerator IdleState(bool freeze = false)
     {
         _agent.isStopped = true;
-        if (freeze) yield return null;
+        if (freeze) yield break;
 
         yield return new WaitForSeconds(RandomTime());
         RandomState();

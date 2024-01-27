@@ -221,6 +221,8 @@ MonoBehaviour:
     Emote: {fileID: 21300000, guid: 7620a4a11cc38634d953651f44c0b63c, type: 3}
   - Threshold: 50
     Emote: {fileID: 21300000, guid: a656a7d2b1950cf42bab6d959f56338a, type: 3}
+  - Threshold: 0
+    Emote: {fileID: 21300000, guid: ce8b796f67e227649b83c55d708a1c85, type: 3}
   _confusedEmote: {fileID: 21300000, guid: 1a1979c44315b6647a947c0b571543e6, type: 3}
 --- !u!1 &1761879435668824481
 GameObject:

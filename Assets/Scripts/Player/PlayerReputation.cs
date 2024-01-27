@@ -17,6 +17,11 @@ public class PlayerReputation : MonoBehaviour
     public void AddRep(float value)
     {
         Reputation += value;
+
+        if (Reputation <= 0)
+        {
+            GameManager.Instance.GameOver(OverReasons.NO_REP);
+        }
     }
 
 }
