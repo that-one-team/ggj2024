@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpawnZones>k__BackingField:
   - {fileID: 1113731412581218937}
+  _baseNPCPrefab: {fileID: 1268396975755981433, guid: 2633c61d964a2f84bbeb5f43a9729d4b, type: 3}
   _maxNPCCount: 20
   _spawnOnStart: 1
 --- !u!1 &1113731412581218937
@@ -75,8 +76,8 @@ Transform:
   m_GameObject: {fileID: 1113731412581218937}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 3.76, z: 0}
-  m_LocalScale: {x: 38.913017, y: 11.1475725, z: 36.692616}
+  m_LocalPosition: {x: 0.3, y: 3.76, z: -0.1}
+  m_LocalScale: {x: 64.36602, y: 18.4392, z: 60.693253}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4790619375923246601}
