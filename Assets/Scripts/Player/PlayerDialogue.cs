@@ -66,7 +66,6 @@ public class PlayerDialogue : MonoBehaviour
         if (_dialogueText.text == _line)
         {
             ClearText();
-            _dialoguePanel.SetActive(false);
             ShowChoices();
         }
     }
@@ -74,8 +73,27 @@ public class PlayerDialogue : MonoBehaviour
     // prepare for animation/cutscene use
     public void ShowChoices()
     {
-        // _choicesPanel.SetActive(true);
+        _dialoguePanel.SetActive(false);
+        _choicesPanel.SetActive(true);
+
+        LoadChoices();
+
         EndConversation();
+    }
+
+    void LoadChoices()
+    {
+        foreach (Transform child in _choicesPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in PlayerInventory.Instance.Items)
+        {
+            var spawned = Instantiate(_choicePrefab, _choicesPanel.transform).GetComponent<UIInventoryItem>();
+            spawned.Data = item;
+            spawned.IsInteractable = true;
+        }
     }
 
     public void EndConversation()

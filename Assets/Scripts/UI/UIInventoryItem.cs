@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public ItemData Data { get; set; }
+
+    public bool IsInteractable = false;
 
     [SerializeField] private GameObject _tooltip;
     [SerializeField] private TextMeshProUGUI _tooltipText;
@@ -28,5 +30,10 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
         _tooltip.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsInteractable) return;
     }
 }
