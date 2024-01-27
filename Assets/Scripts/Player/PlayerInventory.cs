@@ -11,7 +11,12 @@ public class PlayerInventory : MonoBehaviour
 
     public List<ItemData> Items { get; private set; } = new();
 
+    [Header("Settings")]
     public int MaxItemCount;
+
+    [Header("UI")]
+    [SerializeField] private Transform _inventoryPanel;
+    [SerializeField] private GameObject _inventoryItemPrefab;
 
     public bool AddItem(ItemData item)
     {
@@ -20,6 +25,8 @@ public class PlayerInventory : MonoBehaviour
         // TODO add notification
         print("Added item to inventory");
         Items.Add(item);
+
+        UpdateUI();
         return true;
     }
 
@@ -28,6 +35,20 @@ public class PlayerInventory : MonoBehaviour
         if (!Items.Contains(item)) return;
 
         // TODO add notification
+        UpdateUI();
         Items.Remove(item);
+    }
+
+    void UpdateUI()
+    {
+        foreach (Transform child in _inventoryPanel)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in Items)
+        {
+            Instantiate(_inventoryItemPrefab, _inventoryPanel).GetComponent<UIInventoryItem>().Data = item;
+        }
     }
 }
