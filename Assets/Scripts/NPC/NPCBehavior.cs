@@ -1,6 +1,7 @@
 // author: @zsfer
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,7 @@ public class NPCData
     public string Name;
     public HumorStats Stats;
     public List<ClothingItemData> Clothes;
+
 }
 
 public enum NPCState
@@ -25,11 +27,12 @@ public class NPCBehavior : MonoBehaviour
 {
     [field: SerializeField] public NPCData Data { get; set; }
 
+    [Header("Debug")]
+    [SerializeField] TextMeshProUGUI _statsDebug;
+
     public void Spawn(Transform parent)
     {
         transform.name = Data.Name;
-        // transform.localScale = new Vector3(0.17f, 0.17f, 1);
-        // transform.parent = parent;
         GetComponent<CapsuleCollider>().radius = 1;
         GenerateOutfit();
     }
@@ -92,6 +95,11 @@ public class NPCBehavior : MonoBehaviour
         // spawnedItem.transform.localScale = Vector3.one;
 
         spawnedItem.GetComponent<ClothingItemBehaviour>().UpdateVisuals();
+    }
+
+    void Update()
+    {
+        _statsDebug.text = $"{Data.Stats.ToString()}";
     }
 
 }
