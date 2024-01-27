@@ -21,6 +21,7 @@ public class EventsManager : MonoBehaviour
     [SerializeField] Transform _notificationsContainer;
     [SerializeField] GameObject _notificationPrefab;
     [SerializeField] AudioClip _notificationSound;
+    [SerializeField] AudioClip _vibrationSound;
 
     public bool IsEventActive { get; private set; }
     public EventData CurrentEvent { get; private set; }
@@ -88,26 +89,32 @@ public class EventsManager : MonoBehaviour
     {
         _audio.Stop();
         _phone.DOLocalMoveX(600f, 0.5f);
-        string lastNotif = "";
+        // string lastNotif = "";
 
-        for (int i = 0; i < Random.Range(0, 3); i++)
+        for (int i = 0; i < 3; i++)
         {
             var notif = _notifications.SelectRandom();
-            if (notif.Equals(lastNotif)) continue; // if same notification from before, skip
-            lastNotif = notif;
+            // if (notif.Equals(lastNotif)) continue; // if same notification from before, skip
+            // lastNotif = notif;
+
+            yield return new WaitForSeconds(1);
 
             var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
             notifUI.ShowNotif(notif);
 
             _audio.PlayOneShot(_notificationSound);
+            _audio.PlayOneShot(_vibrationSound);
             yield return new WaitForSeconds(0.25f);
         }
 
         yield return null;
     }
 
+    bool _hasResponded = false;
     public void RespondToEvent()
     {
+        if (_hasResponded) return;
+        _hasResponded = true;
         var response = _responses.SelectRandom();
         var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
         notifUI.ShowNotif(response, true);
@@ -119,8 +126,14 @@ public class EventsManager : MonoBehaviour
     public IEnumerator CompleteEvent()
     {
         yield return new WaitForSeconds(2);
-        _phone.DOLocalMoveX(1200, 0.5f);
+        _phone.DOLocalMoveX(1400, 0.5f);
         IsEventActive = false;
         CurrentEvent = null;
+        _hasResponded = false;
+
+        foreach (Transform notif in _notificationsContainer)
+        {
+            Destroy(notif.gameObject);
+        }
     }
 }
