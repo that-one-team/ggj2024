@@ -10,6 +10,21 @@ public class NPCMovement : MonoBehaviour
     private NavMeshAgent _agent;
     private Coroutine _currRoutine;
 
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= GameOver;
+    }
+
+    void GameOver(OverReasons reason)
+    {
+        ProcessState(3);
+    }
+
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -27,15 +42,19 @@ public class NPCMovement : MonoBehaviour
             ChangeState(MovingState());
         else if (state == 2)
             ChangeState(InteractingState());
+        else if (state == 3)
+            ChangeState(IdleState(true));
         else
             ProcessState(0);
 
         // print($"[AI]: {name}: Change state -> {state}");
     }
 
-    IEnumerator IdleState()
+    IEnumerator IdleState(bool freeze = false)
     {
         _agent.isStopped = true;
+        if (freeze) yield return null;
+
         yield return new WaitForSeconds(RandomTime());
         RandomState();
     }

@@ -50,7 +50,7 @@ public class EventManager : MonoBehaviour
 
     public void RunEvent(EventTest evt)
     {
-        playerReputation.reputation += evt.ReputationEffect;
+        playerReputation.Reputation += evt.ReputationEffect;
     }
 
     public void EventProc()

@@ -61,6 +61,9 @@ public class PlayerInventory : MonoBehaviour
         var moodImpact = isNegativelyAffected ? Random.Range(-40, -10) : Random.Range(30, 50);
         targetNPC.GetComponent<NPCMood>().AddMood(moodImpact);
 
+        var reputationImpact = isNegativelyAffected ? -Random.Range(5, 10) : Random.Range(5, 10);
+        PlayerReputation.Instance.AddRep(reputationImpact);
+
         if (item.IsConsumable) RemoveItem(item);
     }
 }

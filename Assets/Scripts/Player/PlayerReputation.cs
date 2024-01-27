@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class PlayerReputation : MonoBehaviour
 {
-    public float reputation;
-    void Start()
+    public static PlayerReputation Instance { get; private set; }
+
+    private void Awake()
     {
-        reputation = 1;
+        Instance = this;
     }
 
-    void Update()
-    {
+    public float Reputation = 5;
 
+    public void AddRep(float value)
+    {
+        Reputation += value;
     }
+
 }

@@ -30,6 +30,8 @@ public class NPCBehavior : MonoBehaviour
     [Header("Debug")]
     [SerializeField] TextMeshProUGUI _statsDebug;
 
+
+
     public void Spawn(Transform parent)
     {
         transform.name = Data.Name;
@@ -102,6 +104,7 @@ public class NPCBehavior : MonoBehaviour
     {
         _statsDebug.text = $"{Data.Stats} - [MOOD] {GetComponent<NPCMood>().CurrentMood}";
     }
+
 
 }
 
