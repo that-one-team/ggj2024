@@ -20,6 +20,7 @@ public class EventsManager : MonoBehaviour
     [SerializeField] List<string> _notifications;
     [SerializeField] Transform _notificationsContainer;
     [SerializeField] GameObject _notificationPrefab;
+    [SerializeField] AudioClip _notificationSound;
 
     public bool IsEventActive { get; private set; }
     public EventData CurrentEvent { get; private set; }
@@ -98,7 +99,7 @@ public class EventsManager : MonoBehaviour
             var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
             notifUI.ShowNotif(notif);
 
-            _audio.Play();
+            _audio.PlayOneShot(_notificationSound);
             yield return new WaitForSeconds(0.25f);
         }
 
