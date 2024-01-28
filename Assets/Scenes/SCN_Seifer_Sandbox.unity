@@ -249,22 +249,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 88259554732619326, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 88259554732619326, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 88259554732619326, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 88259554732619326, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1909474492030278511, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -275,11 +259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2648741234542471793, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000018827832
+      value: 0.00000002023007
       objectReference: {fileID: 0}
     - target: {fileID: 2648741234542471793, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000037309476
+      value: -0.000000004008817
       objectReference: {fileID: 0}
     - target: {fileID: 3968504190486042004, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.y
@@ -325,30 +309,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '@Player'
       objectReference: {fileID: 0}
-    - target: {fileID: 6193293868478946345, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 0b65c245823d3ae42871b941b2ee133a, type: 2}
-    - target: {fileID: 6193293868478946345, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616700453320138463, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616700453320138463, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616700453320138463, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616700453320138463, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6965224355325032462, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.89
@@ -389,29 +349,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7318886049134816461, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7318886049134816461, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7318886049134816461, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7318886049134816461, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8474758429799259707, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000013213731
+      value: -0.000000001441556
       objectReference: {fileID: 0}
     - target: {fileID: 8474758429799259707, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.4509525e-10
+      value: 5.946727e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8604458531120689959, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.y
