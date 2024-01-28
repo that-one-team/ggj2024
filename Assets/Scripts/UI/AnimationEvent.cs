@@ -18,9 +18,14 @@ public class AnimationEvent : MonoBehaviour
     {
         AudioSource.PlayOneShot(BrightMusic);
     }
-    public void PlayDarkEndBright()
+    public void EndMusic()
     {
-        if (AudioSource.isPlaying) { AudioSource.Stop(); }
+        AudioSource.Stop();
+    }
+    public void PlayEndMusic()
+    {
         AudioSource.PlayOneShot(DarkMusic);
+        //if (AudioSource.isPlaying) { AudioSource.Stop(); }
+        //AudioSource.PlayOneShot(DarkMusic);
     }
 }
