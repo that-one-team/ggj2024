@@ -1847,6 +1847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SocialBattery: 100
+  <PassiveDrainMult>k__BackingField: 0.5
+  <ActiveDrainMult>k__BackingField: 1
 --- !u!114 &1768132869055823800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,7 +3056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3253505651443590897}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -3.05123e-10, z: 1.2586975e-10, w: 1}
+  m_LocalRotation: {x: -0, y: 0.0000000014430179, z: -5.9527444e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7472,7 +7474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7817053227843586783}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19438156, y: 0.000000018504059, z: -0.000000003666788, w: 0.98092604}
+  m_LocalRotation: {x: 0.19438156, y: -0.000000020232365, z: 0.000000004009272, w: 0.98092604}
   m_LocalPosition: {x: 0, y: 4.81, z: -11.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
