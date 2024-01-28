@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour
     [field: SerializeField]
     public SpriteRenderer HandObject { get; private set; }
 
+    private PlayerSocialBattery _socialBattery;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,6 +21,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        _socialBattery = GetComponent<PlayerSocialBattery>();
     }
 
     public static event Action<GameObject> OnInteract;
@@ -36,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
         target.GetComponent<Interactable>().Interact();
 
         if (target.GetComponent<NPCBehavior>() && !target.GetComponent<NPCBehavior>().HasInteractedAlready)
-            GetComponent<PlayerSocialBattery>().SocialBattery -= UnityEngine.Random.Range(5, 10);
+            _socialBattery.SocialBattery -= UnityEngine.Random.Range(5, 10);
     }
 
     void Update()
@@ -49,7 +56,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (IsInteracting)
         {
-            GetComponent<PlayerSocialBattery>().SocialBattery -= Time.deltaTime;
+            _socialBattery.SocialBattery -= Time.deltaTime * _socialBattery.ActiveDrainMult;
         }
     }
 
