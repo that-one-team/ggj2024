@@ -9,9 +9,13 @@ public class PlayerSocialBattery : MonoBehaviour
     [field: SerializeField] public float PassiveDrainMult { get; private set; } = 0.5f;
     [field: SerializeField] public float ActiveDrainMult { get; private set; } = 1f;
 
+    float _fakeLog = 1;
+
     void Update()
     {
-        SocialBattery -= Time.deltaTime * PassiveDrainMult;
+        _fakeLog = SocialBattery <= 10 ? 0.5f : 1;
+
+        SocialBattery -= Time.deltaTime * PassiveDrainMult * _fakeLog;
         if (SocialBattery <= 0) GameManager.Instance.GameOver(OverReasons.NO_BAT);
     }
 }
