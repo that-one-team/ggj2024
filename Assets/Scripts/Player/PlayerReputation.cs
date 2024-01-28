@@ -12,10 +12,11 @@ public class PlayerReputation : MonoBehaviour
         Instance = this;
     }
 
-    public float Reputation { get; private set; } = 5;
+    public float Reputation { get; private set; } = 10;
 
     public void AddRep(float value)
     {
+        print("[REP]: added rep " + value);
         Reputation += value;
 
         if (Reputation <= 0)

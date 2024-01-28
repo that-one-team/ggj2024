@@ -30,6 +30,7 @@ public class ItemBehaviourEditor : Editor
         targ.UpdateVisuals(targ.Data);
         targ.transform.localScale = Vector3.one * 0.2f;
         targ.tag = "Interactable";
+        targ.GetComponent<BoxCollider>().size = Vector3.one * 4;
 
         serializedObject.ApplyModifiedProperties();
     }

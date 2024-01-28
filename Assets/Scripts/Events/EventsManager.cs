@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class EventsManager : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] Transform _phone;
     [SerializeField] Image _phoneScreen;
+    [SerializeField] TextMeshProUGUI _timeLeft;
 
     [Header("Notification settings")]
     [SerializeField] List<string> _notifications;
@@ -31,11 +33,15 @@ public class EventsManager : MonoBehaviour
     Sprite[] _tweetIssues;
 
     float _nextGenerateTime;
+    bool _hasResponded;
+
+    [SerializeField] float _replyTime = 11;
+    float _replyTimeLeft = 7;
 
     private void Start()
     {
-
         _audio = GetComponent<AudioSource>();
+        _replyTimeLeft = _replyTime;
 
         var loadedC = Resources.LoadAll("Events/Articles/Controversials", typeof(Sprite));
         _controversialIssues = new Sprite[loadedC.Length];
@@ -51,6 +57,18 @@ public class EventsManager : MonoBehaviour
     void Update()
     {
         EventProc();
+
+        if (!_hasResponded && IsEventActive)
+        {
+            _replyTimeLeft -= Time.deltaTime;
+
+            if (_replyTimeLeft <= 0)
+            {
+                StartCoroutine(CompleteEvent(false));
+            }
+        }
+
+        _timeLeft.text = ((int)_replyTimeLeft).ToString();
     }
 
     void EventProc()
@@ -75,6 +93,7 @@ public class EventsManager : MonoBehaviour
 
     void RunEvent(EventData eventData)
     {
+        _replyTimeLeft = _replyTime;
         IsEventActive = true;
 
         var issues = eventData.Name.ToLower().Equals("fake news") ? _tweetIssues : _controversialIssues;
@@ -110,7 +129,6 @@ public class EventsManager : MonoBehaviour
         yield return null;
     }
 
-    bool _hasResponded = false;
     public void RespondToEvent()
     {
         if (_hasResponded) return;
@@ -118,22 +136,31 @@ public class EventsManager : MonoBehaviour
         var response = _responses.SelectRandom();
         var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
         notifUI.ShowNotif(response, true);
-        PlayerReputation.Instance.AddRep(CurrentEvent.ReputationEffect);
 
-        StartCoroutine(CompleteEvent());
+        StartCoroutine(CompleteEvent(true));
     }
 
-    public IEnumerator CompleteEvent()
+    public IEnumerator CompleteEvent(bool isSuccess, bool force = false)
     {
-        yield return new WaitForSeconds(2);
-        _phone.DOLocalMoveX(1400, 0.5f);
+        _hasResponded = true;
+
+        if (!force)
+        {
+            yield return new WaitForSeconds(2);
+        }
+
         IsEventActive = false;
-        CurrentEvent = null;
+        _phone.DOLocalMoveX(1400, 0.5f);
         _hasResponded = false;
+        _replyTimeLeft = _replyTime;
 
         foreach (Transform notif in _notificationsContainer)
         {
             Destroy(notif.gameObject);
         }
+
+        if (!isSuccess)
+            PlayerReputation.Instance.AddRep(CurrentEvent.ReputationEffect);
+        CurrentEvent = null;
     }
 }
