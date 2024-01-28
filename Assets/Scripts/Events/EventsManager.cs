@@ -91,13 +91,13 @@ public class EventsManager : MonoBehaviour
         _phone.DOLocalMoveX(600f, 0.5f);
         // string lastNotif = "";
 
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < 3; i++)
         {
             var notif = _notifications.SelectRandom();
             // if (notif.Equals(lastNotif)) continue; // if same notification from before, skip
             // lastNotif = notif;
 
-            yield return new WaitForSeconds(1);
 
             var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
             notifUI.ShowNotif(notif);
