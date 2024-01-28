@@ -48,8 +48,13 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         StartCoroutine(Interact());
     }
+
+    bool _hasInteracted = false;
     IEnumerator Interact()
     {
+        if (_hasInteracted) yield break;
+
+        _hasInteracted = true;
         if (!Data.HideInHud)
             PlayerInteraction.Instance.HandObject.sprite = Data.Sprite;
         var animator = PlayerAnimation.Instance.Animator;
@@ -58,5 +63,6 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
         PlayerInteraction.Instance.HandObject.sprite = null;
         PlayerInventory.Instance.UseItem(Data, Target);
         OnInteract();
+        _hasInteracted = false;
     }
 }
