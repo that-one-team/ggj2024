@@ -108,15 +108,11 @@ public class EventsManager : MonoBehaviour
     {
         _audio.Stop();
         _phone.DOLocalMoveX(600f, 0.5f);
-        // string lastNotif = "";
 
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 3; i++)
         {
             var notif = _notifications.SelectRandom();
-            // if (notif.Equals(lastNotif)) continue; // if same notification from before, skip
-            // lastNotif = notif;
-
 
             var notifUI = Instantiate(_notificationPrefab, _notificationsContainer).GetComponent<UINotification>();
             notifUI.ShowNotif(notif);
@@ -149,9 +145,9 @@ public class EventsManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
-        IsEventActive = false;
-        _phone.DOLocalMoveX(1400, 0.5f);
+        _phone.DOLocalMoveX(1400, 0.1f);
         _hasResponded = false;
+        IsEventActive = false;
         _replyTimeLeft = _replyTime;
 
         foreach (Transform notif in _notificationsContainer)
