@@ -42,6 +42,9 @@ TagManager:
   - name: floor
     uniqueID: 2407851515
     locked: 0
+  - name: props
+    uniqueID: 3529642175
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
