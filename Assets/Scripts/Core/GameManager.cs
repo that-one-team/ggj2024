@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject _gameOverScreen;
+    [SerializeField] GameObject _pauseScreen;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
         Instance = this;
         _gameOverScreen.SetActive(false);
+        _pauseScreen.SetActive(false);
     }
     public static event Action<OverReasons> OnGameOver;
 
@@ -38,5 +40,20 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame(!_pauseScreen.activeSelf);
+        }
+    }
+
+    public void PauseGame(bool state)
+    {
+        _pauseScreen.SetActive(state);
+
+        Time.timeScale = state ? 0 : 1;
     }
 }
