@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AnimationEvent : MonoBehaviour
 {
     // public TitleButtons TitleButtons;
     public LoadingScreen LoadingScreen;
-
+    public AudioSource AudioSource;
+    public AudioClip BrightMusic;
+    public AudioClip DarkMusic;
     public void CallNextScene()
     {
         LoadingScreen.LoadScreen(1);
-
-        // TitleButtons.StartGame();
+    }
+    public void PlayBrightMusic()
+    {
+        AudioSource.PlayOneShot(BrightMusic);
+    }
+    public void PlayDarkEndBright()
+    {
+        if (AudioSource.isPlaying) { AudioSource.Stop(); }
+        AudioSource.PlayOneShot(DarkMusic);
     }
 }
