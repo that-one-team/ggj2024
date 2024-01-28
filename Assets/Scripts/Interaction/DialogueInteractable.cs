@@ -1,7 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class DialogueInteractable : Interactable
 {
+    AudioSource _source;
+    private void Start()
+    {
+        _source = GetComponent<AudioSource>();
+    }
+
     public override void Interact()
     {
         if (GetComponent<NPCBehavior>().HasInteractedAlready)
@@ -10,6 +17,9 @@ public class DialogueInteractable : Interactable
             PlayerInteraction.Instance.Interact(false, null);
         }
         else
+        {
             PlayerDialogue.Instance.StartConversation(gameObject);
+            _source.Play();
+        }
     }
 }

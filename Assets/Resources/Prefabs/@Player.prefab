@@ -1342,8 +1342,6 @@ GameObject:
   - component: {fileID: 4502973450281530688}
   - component: {fileID: 1768132869055823800}
   - component: {fileID: 4375429363282128700}
-  - component: {fileID: 5413639611910210838}
-  - component: {fileID: 846843843072390226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1471,7 +1469,7 @@ MonoBehaviour:
   _dialogueData: {fileID: 11400000, guid: 43aa747420ec2d7499b659195c1fb0d7, type: 2}
   _dialoguePanel: {fileID: 6728846331235558705}
   _dialogueText: {fileID: 6193293868478946345}
-  _charsPerSecond: 5
+  _charsPerSecond: 3
   _choicesPanel: {fileID: 1338186540472065116}
   _choicePrefab: {fileID: 8818986823918931345, guid: f31114f9a9c024844b899cb66c420a59, type: 3}
 --- !u!114 &8261337030297062660
@@ -1551,31 +1549,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5413639611910210838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669899260100632965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f79815abdae54546b7ac4c951d10314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &846843843072390226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669899260100632965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74d99d9d2739294a8a1af7cab71ca82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SocialBattery: 100
 --- !u!1 &1758556715335433481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3253505651443590897}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -4.821032e-12, z: 1.9890754e-12, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5729,7 +5702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7817053227843586783}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19438156, y: 0.000000018870388, z: -0.000000003739381, w: 0.98092604}
+  m_LocalRotation: {x: 0.19438156, y: 0.000000018864668, z: -0.0000000037382475, w: 0.98092604}
   m_LocalPosition: {x: 0, y: 4.81, z: -11.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6460,6 +6433,7 @@ MonoBehaviour:
   _notificationsContainer: {fileID: 6032749112789666718}
   _notificationPrefab: {fileID: 4310563052764249983, guid: 18b50ec2639881c44a1c91271b656d68, type: 3}
   _notificationSound: {fileID: 8300000, guid: bc63a1315e284ac41b085676f5430efc, type: 3}
+  _vibrationSound: {fileID: 8300000, guid: de3a3a557f8137746abf23a61faab95c, type: 3}
 --- !u!82 &4111064596171741566
 AudioSource:
   m_ObjectHideFlags: 0

@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 786089986140960638, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
+      propertyPath: _vibrationSound
+      value: 
+      objectReference: {fileID: 8300000, guid: de3a3a557f8137746abf23a61faab95c, type: 3}
     - target: {fileID: 1909474492030278511, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -390,11 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2648741234542471793, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000018875118
+      value: -0.000000018870388
       objectReference: {fileID: 0}
     - target: {fileID: 2648741234542471793, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000037403183
+      value: 0.000000003739381
       objectReference: {fileID: 0}
     - target: {fileID: 3968504190486042004, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.y
@@ -518,11 +522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474758429799259707, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.6815525e-10
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8474758429799259707, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 6.936784e-11
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8604458531120689959, guid: 81ebe37a51d369046b80eecf36bade47, type: 3}
       propertyPath: m_AnchorMax.y
