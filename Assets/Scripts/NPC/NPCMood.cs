@@ -30,7 +30,15 @@ public class NPCMood : MonoBehaviour
 
     void GameOver(OverReasons reason)
     {
-        ShowMood(2, 10000);
+        switch (reason)
+        {
+            case OverReasons.MAX_REP:
+                ShowMood(0, 1000);
+                break;
+            case OverReasons.NO_REP:
+                ShowMood(2, 10000);
+                break;
+        }
     }
 
 

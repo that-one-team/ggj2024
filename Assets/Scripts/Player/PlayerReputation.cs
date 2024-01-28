@@ -23,6 +23,11 @@ public class PlayerReputation : MonoBehaviour
         {
             GameManager.Instance.GameOver(OverReasons.NO_REP);
         }
+
+        if (Reputation >= GameManager.Instance.MaxRep)
+        {
+            GameManager.Instance.GameOver(OverReasons.MAX_REP);
+        }
     }
 
 }

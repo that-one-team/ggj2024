@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _gameOverScreen;
     [SerializeField] GameObject _pauseScreen;
 
+    [field: SerializeField] public int MaxRep { get; private set; } = 100;
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
